@@ -42,3 +42,22 @@ Highlight the workshop when we have:
  - [ ] min. 3 trainers
  - [ ] min. 40 likes or members
 
+### Components
+1. TopBar
+  a) login / logout button
+2. Form
+  a) title
+  b) input
+  c) text input
+  d) button (reuse login) - send
+
+3. WorkshopsList
+4. Workshop
+  a) trainersList
+  b) trainer
+  c) voteCounter
+  d) workshopDescription
+  e) “I want” button
+
+5. PastWorkshops
+  a) Same components
