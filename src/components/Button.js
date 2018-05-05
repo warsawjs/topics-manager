@@ -6,8 +6,8 @@ class Button extends Component {
     render() {
         return (
             this.props.type === 'primary' ?
-                <PrimaryButton>{this.props.children}</PrimaryButton>
-                : <SecondaryButton>{this.props.children}</SecondaryButton>
+                <PrimaryButton onClick={this.props.onClick}>{this.props.children}</PrimaryButton>
+                : <SecondaryButton onClick={this.props.onClick}>{this.props.children}</SecondaryButton>
         );
     }
 
