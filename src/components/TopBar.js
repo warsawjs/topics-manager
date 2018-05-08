@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import Button from "./Button";
-import {connect} from 'react-redux'
-import {login, logout} from './../actions'
+import { connect } from 'react-redux'
+import { login, logout } from './../actions'
+import Text from "./Text";
 
 class TopBar extends Component {
 
@@ -11,15 +12,12 @@ class TopBar extends Component {
     }
 
     render() {
-        const {loggedUser, login, logout} = this.props;
-        console.log(loggedUser);
+        const { loggedUser, login, logout } = this.props;
         const buttonAction = loggedUser ? logout : login;
-        console.log('🦑buttonAction', buttonAction);
-        console.log('🦑logout', logout);
         const buttonText = loggedUser ? 'Wyloguj' : 'Zaloguj';
         return (
             <TopBarWrapper>
-                <h2>Zaloguj się przez GitHub</h2>
+                <Text type="basic" color={'#fff'} display={'inline'}>Zaloguj się przez GitHub</Text>
                 <Button onClick={buttonAction} type="primary">{buttonText}</Button>
             </TopBarWrapper>
         );
@@ -39,12 +37,7 @@ const TopBarWrapper = styled.section`
   width: 100%;
   background-color: #000;
   color: #fff;
-  
-  h2 {
-    font-size: 16px;
-    display: inline;
-    margin: 0 10px;
-  }
+  padding: 7px;
 `;
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopBar)
