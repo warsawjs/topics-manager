@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import Colors from "../styles/Colors";
 
 const Text = props => (
-        <StyledText type={props.type || 'default'} color={props.color} display={props.display}>
-            { props.children }
-        </StyledText>
+    <StyledText type={props.type || 'default'} color={props.color} display={props.display}>
+        { props.children }
+    </StyledText>
 );
 
 const style = {

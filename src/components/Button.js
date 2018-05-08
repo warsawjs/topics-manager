@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import Colors from "../styles/Colors";
 
 const Button = props => (
-        props.type === 'primary' ?
-            <PrimaryButton {...props} onClick={props.onClick}>{props.children}</PrimaryButton>
-            : <SecondaryButton {...props} onClick={props.onClick}>{props.children}</SecondaryButton>
+    props.type === 'primary' ?
+        <PrimaryButton {...props} onClick={props.onClick}>{props.children}</PrimaryButton>
+        : <SecondaryButton {...props} onClick={props.onClick}>{props.children}</SecondaryButton>
 );
 
 const BasicButton = styled.button`
