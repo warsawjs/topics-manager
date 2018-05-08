@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Colors from "../styles/Colors";
 
 class Button extends Component {
 
     render() {
+        const props = this.props;
         return (
             this.props.type === 'primary' ?
-                <PrimaryButton onClick={this.props.onClick}>{this.props.children}</PrimaryButton>
-                : <SecondaryButton onClick={this.props.onClick}>{this.props.children}</SecondaryButton>
+                <PrimaryButton {...props} onClick={this.props.onClick}>{this.props.children}</PrimaryButton>
+                : <SecondaryButton {...props} onClick={this.props.onClick}>{this.props.children}</SecondaryButton>
         );
     }
 
@@ -19,16 +21,17 @@ const BasicButton = styled.button`
     font-size: 12px;
     border-radius: 3px;
     min-width: 70px;
+    margin-left: ${props => props.marginLeft};
 `;
 
 const PrimaryButton = BasicButton.extend`
-  background-color: #F7302F;
-  color: #fff;
+  background-color: ${Colors.red};
+  color: ${Colors.white};
 `;
 
 const SecondaryButton = BasicButton.extend`
-  backround-color: #FAE452;
-  color: #000;
+  backround-color: ${Colors.yellow};
+  color: ${Colors.black};
 `;
 
 export default Button;

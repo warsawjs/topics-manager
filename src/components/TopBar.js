@@ -4,6 +4,7 @@ import Button from "./Button";
 import { connect } from 'react-redux'
 import { login, logout } from './../actions'
 import Text from "./Text";
+import Colors from "../styles/Colors";
 
 class TopBar extends Component {
 
@@ -17,8 +18,8 @@ class TopBar extends Component {
         const buttonText = loggedUser ? 'Wyloguj' : 'Zaloguj';
         return (
             <TopBarWrapper>
-                <Text type="basic" color={'#fff'} display={'inline'}>Zaloguj się przez GitHub</Text>
-                <Button onClick={buttonAction} type="primary">{buttonText}</Button>
+                <Text type="basic" color={Colors.white} display={'inline'}>Zaloguj się przez GitHub</Text>
+                <Button marginLeft='10px' onClick={buttonAction} type="primary">{buttonText}</Button>
             </TopBarWrapper>
         );
     }
@@ -35,8 +36,8 @@ const mapDispatchToProps = dispatch => ({
 
 const TopBarWrapper = styled.section`
   width: 100%;
-  background-color: #000;
-  color: #fff;
+  background-color: ${Colors.black};
+  color: ${Colors.white};
   padding: 7px;
 `;
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Colors from "../styles/Colors";
 
 class Button extends Component {
 
@@ -15,19 +16,19 @@ class Button extends Component {
 const style = {
     primary: {
         fontSize: '28',
-        color: '#000'
+        color: Colors.black,
     },
     secondary: {
         fontSize: '18',
-        color: '#000'
+        color: Colors.black,
     },
     basic: {
         fontSize: '14',
-        color: '#aaa'
+        color: Colors.grey,
     },
     default: {
         fontSize: '12',
-        color: '#aaa'
+        color: Colors.grey,
     }
 }
 
