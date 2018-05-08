@@ -13,7 +13,12 @@ const Topic = props => (
 );
 
 const RowWrapper = styled.li`
+    width: 100%;
+    margin-top: 2em;
     display: flex;
-`
+    flex: start;
+    justify-content: space-between;
+    text-align: left;
+`;
 
 export default Topic;
