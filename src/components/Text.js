@@ -1,18 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Colors from "../styles/Colors";
 
-class Button extends Component {
+const Text = props => (
+        <StyledText type={props.type || 'default'} color={props.color} display={props.display}>
+            { props.children }
+        </StyledText>
+);
 
-    render() {
-        return (
-            <Text type={this.props.type || 'default'} color={this.props.color} display={this.props.display}>
-                { this.props.children }
-            </Text>
-        );
-    }
-
-}
 const style = {
     primary: {
         fontSize: '28',
@@ -32,11 +27,11 @@ const style = {
     }
 }
 
-const Text = styled.p`
+const StyledText = styled.p`
     display: ${props => props.display || 'block'}
     font-size: ${props => style[props.type].fontSize}px;
     color: ${props => props.color || style[props.type].color};
     line-height: ${props => style[props.type].fontSize * 1.2}px
 `;
 
-export default Button;
+export default Text;
