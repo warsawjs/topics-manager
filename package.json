@@ -17,12 +17,21 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "ajv": "^6.5.0",
+    "ajv-keywords": "^3.2.0",
     "babel-core": "^6.26.3",
     "babel-jest": "^22.4.3",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "jest": "^22.4.3"
+    "enzyme-to-json": "^3.3.3",
+    "jest": "^22.4.3",
+    "jest-styled-components": "^5.0.1"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   }
 }
