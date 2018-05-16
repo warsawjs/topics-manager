@@ -14,12 +14,22 @@ describe('<TopBar> should render', () => {
         loggedUser: true
     }
     const store = mockStore(state);
-    const wrapper = shallow(<TopBar store={store}/>).dive();
+    let wrapper = shallow(<TopBar store={store}/>).dive();
     it('should contain certain texts', () => {
         const styledComponent = wrapper.find('Text');
         expect(styledComponent.children().text()).toBe('Zaloguj się przez GitHub');
     })
+    it('should logout', () => {
+        const styledComponent = wrapper.find('Button');
+        expect(styledComponent.children().text()).toBe('Wyloguj');
+    })
+    it('should change text to login', () => {
+        const emptyStore = mockStore({});
+        let wrapper = shallow(<TopBar store={emptyStore}/>).dive();
+        const styledComponent = wrapper.find('Button');
+        expect(styledComponent.children().text()).toBe('Zaloguj');
 
+    })
     it('should match snapshot', () => {
         expect(wrapper).toMatchSnapshot();
     })
