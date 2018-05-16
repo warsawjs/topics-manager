@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TopBar> should render should match snapshot 1`] = `
+<styled.section>
+  <Text
+    color="#fff"
+    display="inline"
+    type="basic"
+  >
+    Zaloguj się przez GitHub
+  </Text>
+  <Button
+    marginLeft="10px"
+    onClick={[Function]}
+    type="primary"
+  >
+    Wyloguj
+  </Button>
+</styled.section>
+`;

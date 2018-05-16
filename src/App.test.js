@@ -6,7 +6,7 @@ import 'jest-styled-components';
 
 configure({adapter: new Adapter() });
 
-describe('<App />', () => {
+describe("Should render <App />", () => {
     const wrapper = shallow(<App />);
     it('should contain sections', () => {
         expect(wrapper.find('Header').exists()).toBe(true);
