@@ -9,9 +9,9 @@ configure({adapter: new Adapter() });
 describe('<App />', () => {
     const wrapper = shallow(<App />);
     it('should contain sections', () => {
-        expect(wrapper.find('Header').length).toBe(1);
-        expect(wrapper.find('WorkshopForm').length).toBe(1);
-        expect(wrapper.find('TopicsList').length).toBe(1);
+        expect(wrapper.find('Header').exists()).toBe(true);
+        expect(wrapper.find('WorkshopForm').exists()).toBe(true);
+        expect(wrapper.find('TopicsList').exists()).toBe(true);
     });
 
     it('should match snapshot', () => {
