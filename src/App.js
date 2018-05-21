@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-import TopBar from "./components/TopBar";
-import WorkshopForm from "./components/WorkshopForm";
-import Header from "./components/Header";
-import TopicsList from "./components/topic/TopicsList";
+import TopBar from './components/TopBar';
+import WorkshopForm from './components/WorkshopForm';
+import Header from './components/Header';
+import TopicsList from './components/topic/TopicsList';
 
 class App extends Component {
     render() {
@@ -24,6 +24,6 @@ const Main = styled.main`
     * {
         box-sizing: inherit;
     }
-`
+`;
 
 export default App;

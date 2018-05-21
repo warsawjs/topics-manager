@@ -5,13 +5,14 @@ class Section extends Component {
 
     render() {
         return (
-            <Background background={this.props.background}>
+            <Background background={ this.props.background }>
                 <Container>
                     { this.props.children }
                 </Container>
             </Background>
         );
     }
+
 }
 
 const Background = styled.section`

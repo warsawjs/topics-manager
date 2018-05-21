@@ -1,8 +1,8 @@
 import React from 'react';
-import TopicDescription from "./TopicDescription";
-import TrainersList from "./TrainersList";
+import TopicDescription from './TopicDescription';
+import TrainersList from './TrainersList';
 import styled from 'styled-components';
-import Participants from "./Participants";
+import Participants from './Participants';
 
 const Topic = props => (
     <RowWrapper>

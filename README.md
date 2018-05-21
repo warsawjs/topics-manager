@@ -1,63 +1,72 @@
-Work plan:
+# topics-manager
 
-1) Add mock templates (final graphics will be added later, to be coherent with new WarsawJS page layout)
+## Work plan
 
-2) Add basic components
+1. Add mock templates
 
-3) Add sign up and sign in.
-Requirements:
-- remember only the minimum: GitHub user.id | key and maybe votes
-- use OAuth 2.0 - using a library or without
+    _Final graphics will be added later, to be coherent with new WarsawJS page layout_
 
-## Features:
+2. Add basic components
+3. Add sign up and sign in
+
+    Requirements:
+
+    - remember only the minimum: GitHub user.id | key and maybe votes
+    - use OAuth 2.0 - using a library or without
+
+## Features
 
 ### List view of all workshop proposals
+
 - [ ] the main list component
 - [ ] toggle between compact and broad
 
 ### Show view
+
 - [ ] subject of the workshop
 - [ ] list of trainers who want to join
 - [ ] highlighting of the autor (first trainer)
 
-
 #### Buttons
-  - [ ] Voting - for the community
-  - [ ] secure from multiple votes
-  - [ ] secure from multiple signups by one trainer
-  - [ ] from for adding a new subject
-    - [ ] View for a signup user
 
+- [ ] Voting - for the community
+- [ ] secure from multiple votes
+- [ ] secure from multiple signups by one trainer
+- [ ] from for adding a new subject
+    - [ ] View for a signup user
     - [ ] Reset after issue of the form
     - [ ] Saving form data
     - [ ] Edition of the saved subjects
-  - [ ] Showing the basic data about the signed up trainers
+- [ ] Showing the basic data about the signed up trainers
     - [ ] add authorization
-    - [ ] Use GitHub API integration or hellojs
+    - [ ] Use GitHub API integration or `hello.js`
     - [ ] Sign in
     - [ ] Logout
 
-Additional features:
-Highlight the workshop when we have:
- - [ ] min. 3 trainers
- - [ ] min. 40 likes or members
+## Additional features :star:
+
+- [ ] Highlight the workshop when we have:
+    - [ ] min. 3 trainers
+    - [ ] min. 40 likes or members
 
 ### Components
+
 1. TopBar
-  a) login / logout button
+    - login / logout button
+
 2. Form
-  a) title
-  b) input
-  c) text input
-  d) button (reuse login) - send
+    - title
+    - input
+    - text input
+    - button (reuse login) - send
 
 3. WorkshopsList
 4. Workshop
-  a) trainersList
-  b) trainer
-  c) voteCounter
-  d) workshopDescription
-  e) “I want” button
+    - trainersList
+    - trainer
+    - voteCounter
+    - workshopDescription
+    - “I want” button
 
 5. PastWorkshops
-  a) Same components
+    - Same components

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Participants = props => (
     <StyledParticipants>
-        <img src="chart.PNG" alt="chart image" />
+        <img src="chart.PNG" alt="chart"/>
     </StyledParticipants>
 );
 
@@ -12,6 +12,6 @@ const StyledParticipants = styled.figure`
     img {
         width: 100px;
     }
-`
+`;
 
 export default Participants;

@@ -1,7 +1,7 @@
 import React from 'react';
-import Section from "../Section";
-import Text from "../Text";
-import Topic from "./Topic";
+import Section from '../Section';
+import Text from '../Text';
+import Topic from './Topic';
 
 const TopicsList = props => (
     <Section>
