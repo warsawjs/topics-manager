@@ -24,5 +24,4 @@ const Textarea = styled.textarea`
     border: none;
 `;
 
-
 export default WorkshopForm;

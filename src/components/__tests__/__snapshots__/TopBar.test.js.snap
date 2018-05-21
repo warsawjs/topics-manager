@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TopBar> should render should match snapshot 1`] = `
+exports[`<TopBar> should render 1`] = `
 <styled.section>
   <Text
     color="#fff"
@@ -14,7 +14,7 @@ exports[`<TopBar> should render should match snapshot 1`] = `
     onClick={[Function]}
     type="primary"
   >
-    Wyloguj
+    Zaloguj
   </Button>
 </styled.section>
 `;

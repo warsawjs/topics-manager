@@ -7,28 +7,29 @@ import Text from './Text';
 import Colors from '../styles/Colors';
 
 class TopBar extends Component {
-
-    constructor(props) {
-        super();
-    }
-
-    render() {
+    
+    onClick = () => {
         const { loggedUser, login, logout } = this.props;
-        const buttonAction = loggedUser ? logout : login;
+        const onPressAction = loggedUser ? logout : login;
+        onPressAction();
+    };
+    
+    render() {
+        const { loggedUser } = this.props;
         const buttonText = loggedUser ? 'Wyloguj' : 'Zaloguj';
         return (
             <TopBarWrapper>
                 <Text type="basic" color={ Colors.white } display={ 'inline' }>
                     Zaloguj się przez GitHub
                 </Text>
-                <Button marginLeft='10px' onClick={ buttonAction }
+                <Button marginLeft='10px' onClick={this.onClick}
                         type="primary">
                     { buttonText }
                 </Button>
             </TopBarWrapper>
         );
     }
-
+    
 }
 
 const mapStateToProps = state => ({
