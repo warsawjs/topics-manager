@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "prop-types": "^15.6.1",
         "react": "^16.3.2",
         "react-dom": "^16.3.2",
         "react-redux": "^5.0.7",
@@ -15,12 +16,14 @@
         "build": "react-scripts build",
         "test": "jest",
         "test:watch": "jest --watch",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "precommit": "lint-staged"
     },
     "devDependencies": {
         "ajv": "^6.5.0",
         "ajv-keywords": "^3.2.0",
         "babel-core": "^6.26.3",
+        "babel-eslint": "^8.2.3",
         "babel-jest": "^22.4.3",
         "babel-preset-env": "^1.6.1",
         "babel-preset-react": "^6.24.1",
@@ -28,13 +31,29 @@
         "enzyme": "^3.3.0",
         "enzyme-adapter-react-16": "^1.1.1",
         "enzyme-to-json": "^3.3.3",
+        "eslint": "^4.19.1",
+        "eslint-plugin-react": "^7.8.2",
+        "husky": "^1.0.0-rc.6",
         "jest": "^22.4.3",
         "jest-styled-components": "^5.0.1",
+        "lint-staged": "^7.1.2",
         "redux-mock-store": "^1.5.1"
     },
     "jest": {
         "snapshotSerializers": [
             "enzyme-to-json/serializer"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run precommit",
+            "pre-push": "npm test"
+        }
+    },
+    "lint-staged": {
+        "src/**/*.js": [
+            "eslint --fix",
+            "git add"
         ]
     }
 }

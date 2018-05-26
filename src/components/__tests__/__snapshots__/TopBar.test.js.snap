@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TopBar> should render 1`] = `
+exports['<TopBar> should render 1'] = `
 <styled.section>
   <Text
     color="#fff"
