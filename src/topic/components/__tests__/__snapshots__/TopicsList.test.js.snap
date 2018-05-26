@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TopicsList> should render 1`] = `
+<Section>
+  <Text
+    type="primary"
+  >
+    Zgłoszone tematy
+  </Text>
+</Section>
+`;
+
+exports[`<TopicsList> when topics are provided should match snapshot 1`] = `
+<Section>
+  <Text
+    type="primary"
+  >
+    Zgłoszone tematy
+  </Text>
+  <Topic
+    key="0"
+    topic={TopicModel {}}
+  />
+  <Topic
+    key="1"
+    topic={TopicModel {}}
+  />
+</Section>
+`;

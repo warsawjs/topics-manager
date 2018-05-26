@@ -1,6 +1,6 @@
 import React from 'react';
 import Colors from '../../styles/Colors';
-import Text from '../Text';
+import Text from '../../components/Text';
 import styled from 'styled-components';
 
 const TopicDescription = props => (

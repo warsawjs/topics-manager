@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import TopBar from './components/TopBar';
 import WorkshopForm from './components/WorkshopForm';
 import Header from './components/Header';
-import TopicsList from './components/topic/TopicsList';
+import TopicContainer from './topic/TopicContainer';
+
 
 class App extends Component {
     render() {
@@ -12,7 +13,7 @@ class App extends Component {
                 <TopBar/>
                 <Header/>
                 <WorkshopForm/>
-                <TopicsList/>
+                <TopicContainer/>
             </Main>
         );
     }
