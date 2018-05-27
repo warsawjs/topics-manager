@@ -7,7 +7,7 @@ class Header extends Component {
     render() {
         return (
             <Section>
-                <Text type="primary">Stwórz Workshop!</Text>
+                <Text type='header'>Stwórz Workshop!</Text>
                 <Text>
                     Scratch the furniture i like big cats and i can not lie.
                     Making sure that fluff gets into the owner's eyes ask for

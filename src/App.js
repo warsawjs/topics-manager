@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
 import TopBar from './components/TopBar';
 import WorkshopForm from './components/WorkshopForm';
 import Header from './components/Header';
@@ -25,6 +25,15 @@ const Main = styled.main`
     * {
         box-sizing: inherit;
     }
+`;
+
+/* eslint no-unused-expressions: 0 */
+injectGlobal`
+  @import url('https://fonts.googleapis.com/css?family=Lato');
+  
+  body {
+    font-family: 'Lato', Sans-Serif;
+  }
 `;
 
 export default App;

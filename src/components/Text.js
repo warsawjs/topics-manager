@@ -29,7 +29,13 @@ const style = {
     default: {
         fontSize: '12',
         color: Colors.grey
-    }
+    },
+    header: {
+        fontFamily: 'Lato sans-serif',
+        fontSize: '35',
+        fontWeight: 'bold',
+        color: '#464646'
+    },
 };
 
 const StyledText = styled.p`
