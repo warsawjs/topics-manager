@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TopicContainer> should match snapshot with error 1`] = `
+<div>
+  <p>
+    test error message
+  </p>
+</div>
+`;
+
+exports[`<TopicContainer> when there are no errors should match snapshot 1`] = `
+<div>
+  <TopicsList
+    pending={true}
+    topics={
+      Array [
+        TopicModel {},
+        TopicModel {},
+      ]
+    }
+  />
+</div>
+`;

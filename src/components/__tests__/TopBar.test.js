@@ -12,7 +12,9 @@ const mockStore = configureMockStore();
 
 describe('<TopBar>', () => {
     const initialState = {
-        loggedUser: false
+        auth: {
+            loggedUser: false
+        }
     };
     let wrapper;
     let store = mockStore(initialState);
@@ -29,7 +31,9 @@ describe('<TopBar>', () => {
         let button;
         beforeEach(() => {
             store = mockStore({
-                loggedUser: true
+                auth: {
+                    loggedUser: true
+                }
             });
             wrapper = shallow(<TopBar store={store}/>).dive();
             button = wrapper.find(Button);
@@ -52,7 +56,9 @@ describe('<TopBar>', () => {
         let button;
         beforeEach(() => {
             store = mockStore({
-                loggedUser: false
+                auth: {
+                    loggedUser: false
+                }
             });
             wrapper = shallow(<TopBar store={store}/>).dive();
             button = wrapper.find(Button);

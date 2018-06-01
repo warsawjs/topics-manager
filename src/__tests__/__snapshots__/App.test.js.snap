@@ -7,6 +7,6 @@ exports[`Should render <App /> should match snapshot 1`] = `
   <Connect(TopBar) />
   <Header />
   <WorkshopForm />
-  <TopicContainer />
+  <Connect(TopicContainer) />
 </styled.main>
 `;

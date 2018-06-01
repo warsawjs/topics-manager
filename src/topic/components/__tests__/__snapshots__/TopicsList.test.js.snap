@@ -10,6 +10,17 @@ exports[`<TopicsList> should render 1`] = `
 </Section>
 `;
 
+exports[`<TopicsList> when topics are loading should match snapshot 1`] = `
+<Section>
+  <Text
+    type="primary"
+  >
+    Zgłoszone tematy
+  </Text>
+  <ActivityIndicator />
+</Section>
+`;
+
 exports[`<TopicsList> when topics are provided should match snapshot 1`] = `
 <Section>
   <Text

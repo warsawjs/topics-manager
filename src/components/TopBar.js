@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
 import { connect } from 'react-redux';
-import { login, logout } from './../actions';
+import { login, logout } from './../actions/auth.actions';
 import Text from './Text';
 import Colors from '../styles/Colors';
 import PropTypes from 'prop-types';
@@ -38,7 +38,7 @@ TopBar.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    loggedUser: state.loggedUser
+    loggedUser: state.auth.loggedUser
 });
 
 const mapDispatchToProps = dispatch => ({

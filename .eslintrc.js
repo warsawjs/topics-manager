@@ -3,7 +3,8 @@ module.exports = {
         'browser': true,
         'commonjs': true,
         'jasmine': true,
-        'es6': true
+        'es6': true,
+        'jest/globals': true
     },
     'parser': 'babel-eslint',
     'extends': [
@@ -19,7 +20,8 @@ module.exports = {
         'sourceType': 'module'
     },
     'plugins': [
-        'react'
+        'react',
+        'jest'
     ],
     'rules': {
         'indent': [

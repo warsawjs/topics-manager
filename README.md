@@ -70,3 +70,9 @@
 
 5. PastWorkshops
     - Same components
+
+
+# libraries
+* redux-observable > 1.0.0 doess not support rxjs v6 or redux 4
+* redux-observable prior to 1.0.0 does not support redux < 4
+* redux-observable will support redux 4 soon hopefully https://github.com/redux-observable/redux-observable/issues/478 https://github.com/redux-observable/redux-observable/pull/501
