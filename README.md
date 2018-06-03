@@ -1,5 +1,14 @@
 # topics-manager
 
+## Contributing
+
+We welcome your contributions! Each PR needs at least one approving review.
+
+For CSS properties please use the following order:
+Positioning > Display & Box Model > Color > Text > Other
+Simply explained here: https://css-tricks.com/poll-results-how-do-you-order-your-css-properties/
+
+
 ## Work plan
 
 1. Add mock templates
