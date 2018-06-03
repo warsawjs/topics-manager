@@ -1,7 +1,9 @@
 import React from 'react';
 
-export const ActivityIndicator = () => {
+const ActivityIndicator = () => {
     return (
         <p>Loading</p>
     );
 };
+
+export default ActivityIndicator;

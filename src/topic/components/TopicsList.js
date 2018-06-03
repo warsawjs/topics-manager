@@ -4,7 +4,7 @@ import Text from '../../components/Text';
 import Topic from './Topic';
 import PropTypes from 'prop-types';
 import TopicModel from '../../shared/models/TopicModel';
-import { ActivityIndicator } from '../../shared/components/ActivityIndicator';
+import ActivityIndicator from '../../shared/components/ActivityIndicator';
 
 const TopicsList = ({ topics, pending }) => (
     <Section>
