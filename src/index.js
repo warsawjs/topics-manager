@@ -7,8 +7,7 @@ import authReducer from './reducers/auth.reducer';
 
 import thunk from 'redux-thunk';
 
-import './reset.css';
-import './index.css';
+import './styles/reset.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 

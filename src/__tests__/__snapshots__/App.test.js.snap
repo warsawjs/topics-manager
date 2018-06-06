@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Should render <App /> should match snapshot 1`] = `
-<styled.main
-  className="App"
->
+<React.Fragment>
   <Connect(TopBar) />
   <Header />
-  <WorkshopForm />
-  <Connect(TopicContainer) />
-</styled.main>
+  <main>
+    <WorkshopForm />
+    <Connect(TopicContainer) />
+  </main>
+</React.Fragment>
 `;
