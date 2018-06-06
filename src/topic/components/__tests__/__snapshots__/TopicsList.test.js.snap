@@ -1,28 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TopicsList> should render 1`] = `
-<Section>
+<React.Fragment>
   <Text
     type="primary"
   >
     Zgłoszone tematy
   </Text>
-</Section>
+</React.Fragment>
 `;
 
 exports[`<TopicsList> when topics are loading should match snapshot 1`] = `
-<Section>
+<React.Fragment>
   <Text
     type="primary"
   >
     Zgłoszone tematy
   </Text>
   <ActivityIndicator />
-</Section>
+</React.Fragment>
 `;
 
 exports[`<TopicsList> when topics are provided should match snapshot 1`] = `
-<Section>
+<React.Fragment>
   <Text
     type="primary"
   >
@@ -36,5 +36,5 @@ exports[`<TopicsList> when topics are provided should match snapshot 1`] = `
     key="1"
     topic={TopicModel {}}
   />
-</Section>
+</React.Fragment>
 `;

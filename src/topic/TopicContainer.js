@@ -4,21 +4,23 @@ import TopicsList from './components/TopicsList';
 import { getTopics } from '../actions/topic.actions';
 import { connect } from 'react-redux';
 import TopicModel from '../shared/models/TopicModel';
+import Container from '../shared/components/Container';
+
 
 // tests for actions & thunk's dispatching
 class TopicContainer extends React.Component {
-    
+
     componentDidMount() {
         this.props.getTopics();
     }
-    
+
     render() {
         const { topics, pending, error } = this.props;
         return (
-            <div>
+            <Container type="section">
                 {error && <p>{error}</p>}
                 {!error && <TopicsList pending={pending} topics={topics}/>}
-            </div>
+            </Container>
         );
     }
 }
