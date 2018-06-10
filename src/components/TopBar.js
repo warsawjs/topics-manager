@@ -2,29 +2,33 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
 import { connect } from 'react-redux';
-import { login, logout } from './../actions/auth.actions';
 import Text from './Text';
 import Colors from '../styles/Colors';
 import PropTypes from 'prop-types';
 import Container from '../shared/components/Container';
-
+import { requestLogin, requestLogout } from '../actions/auth.actions';
+import ActivityIndicator from '../shared/components/ActivityIndicator';
+//TODO make some AppError model and HelloGHError model (extends AppError)
 class TopBar extends React.Component {
 
     onClick = () => {
-        const { loggedUser, login, logout } = this.props;
-        const onPressAction = loggedUser ? logout : login;
+        const { logged, requestLogout, requestLogin } = this.props;
+        const onPressAction = logged ? requestLogout : requestLogin;
         onPressAction();
     };
 
     render() {
-        const { loggedUser } = this.props;
-        const buttonText = loggedUser ? 'Wyloguj' : 'Zaloguj';
+        const { logged, pending, user, error } = this.props;
+        const buttonText = logged ? 'Wyloguj' : 'Zaloguj';
         return (
             <Container backgroundColor={Colors.black} inner={false}>
                 <Inner>
                     <Text type="basic" color={ Colors.white } display={ 'inline' }>
-                        Zaloguj się przez GitHub
+                        {!logged && 'Zaloguj się'}
+                        {logged && user && user.email}
                     </Text>
+                    {pending && <ActivityIndicator/>}
+                    {error && <p>Błąd: {JSON.stringify(error)}</p>}
                     <Button marginLeft='10px' onClick={this.onClick} type="primary">
                         { buttonText }
                     </Button>
@@ -35,18 +39,24 @@ class TopBar extends React.Component {
 }
 
 TopBar.propTypes = {
-    loggedUser: PropTypes.bool,
-    login: PropTypes.func,
-    logout: PropTypes.func
+    logged: PropTypes.bool,
+    pending: PropTypes.bool,
+    error: PropTypes.any,
+    user: PropTypes.any,
+    requestLogin: PropTypes.func,
+    requestLogout: PropTypes.func
 };
 
 const mapStateToProps = state => ({
-    loggedUser: state.auth.loggedUser
+    logged: state.auth.logged,
+    pending: state.auth.pending,
+    user: state.auth.user,
+    error: state.auth.error,
 });
 
 const mapDispatchToProps = dispatch => ({
-    login: () => dispatch(login()),
-    logout: () => dispatch(logout())
+    requestLogin: () => dispatch(requestLogin()),
+    requestLogout: () => dispatch(requestLogout())
 });
 
 const Inner = styled.section`

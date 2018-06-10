@@ -5,15 +5,18 @@ import configureMockStore from 'redux-mock-store';
 import 'jest-styled-components';
 import TopBar from '../TopBar';
 import Button from '../Button';
-import { LOGIN, LOGOUT } from '../../actions/action_types';
+import { LOGIN_REQUEST, LOGOUT_REQUEST } from '../../actions/action_types';
+
+import thunk from 'redux-thunk';
+const middlewares = [thunk];
 
 configure({ adapter: new Adapter() });
-const mockStore = configureMockStore();
+const mockStore = configureMockStore(middlewares);
 
 describe('<TopBar>', () => {
     const initialState = {
         auth: {
-            loggedUser: false
+            logged: false
         }
     };
     let wrapper;
@@ -32,7 +35,7 @@ describe('<TopBar>', () => {
         beforeEach(() => {
             store = mockStore({
                 auth: {
-                    loggedUser: true
+                    logged: true
                 }
             });
             wrapper = shallow(<TopBar store={store}/>).dive();
@@ -47,7 +50,7 @@ describe('<TopBar>', () => {
             button.simulate('click');
             const actions = store.getActions();
             expect(actions.length).toBe(1);
-            expect(actions[0].type).toBe(LOGOUT);
+            expect(actions[0].type).toBe(LOGOUT_REQUEST);
         });
         
     });
@@ -57,7 +60,7 @@ describe('<TopBar>', () => {
         beforeEach(() => {
             store = mockStore({
                 auth: {
-                    loggedUser: false
+                    logged: false
                 }
             });
             wrapper = shallow(<TopBar store={store}/>).dive();
@@ -72,7 +75,7 @@ describe('<TopBar>', () => {
             button.simulate('click');
             const actions = store.getActions();
             expect(actions.length).toBe(1);
-            expect(actions[0].type).toBe(LOGIN);
+            expect(actions[0].type).toBe(LOGIN_REQUEST);
         });
     });
     

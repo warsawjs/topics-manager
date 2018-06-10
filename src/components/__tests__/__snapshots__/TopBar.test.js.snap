@@ -11,7 +11,7 @@ exports[`<TopBar> should render 1`] = `
       display="inline"
       type="basic"
     >
-      Zaloguj się przez GitHub
+      Zaloguj się
     </Text>
     <Button
       marginLeft="10px"

@@ -8,5 +8,6 @@ exports[`Should render <App /> should match snapshot 1`] = `
     <WorkshopForm />
     <Connect(TopicContainer) />
   </main>
+  <Connect(AuthCallbackContainer) />
 </React.Fragment>
 `;

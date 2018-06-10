@@ -5,6 +5,8 @@ import WorkshopForm from './components/WorkshopForm';
 import Header from './components/Header';
 import TopicContainer from './topic/TopicContainer';
 
+import AuthCallbackContainer from './shared/components/AuthCallbackContainer';
+
 class App extends Component {
     render() {
         return (
@@ -15,6 +17,7 @@ class App extends Component {
                     <WorkshopForm />
                     <TopicContainer />
                 </main>
+                <AuthCallbackContainer/>
             </React.Fragment>
         );
     }
