@@ -20,7 +20,9 @@
         "test:watch": "jest --watch",
         "test:coverage": "jest --coverage  --collectCoverageFrom=**/src/**/*.js",
         "eject": "react-scripts eject",
-        "precommit": "lint-staged"
+        "precommit": "lint-staged",
+        "format": "prettier src/**/*.js",
+        "format:write": "prettier --write src/**/*.js"
     },
     "devDependencies": {
         "ajv": "^6.5.0",
@@ -41,6 +43,7 @@
         "jest": "^22.4.3",
         "jest-styled-components": "^5.0.1",
         "lint-staged": "^7.1.2",
+        "prettier": "1.13.4",
         "react-test-renderer": "^16.4.0",
         "redux-mock-store": "^1.5.1"
     },
@@ -57,6 +60,7 @@
     },
     "lint-staged": {
         "src/**/*.js": [
+            "prettier --write",
             "eslint --fix",
             "git add"
         ]
