@@ -30,11 +30,21 @@ exports[`<TopicsList> when topics are provided should match snapshot 1`] = `
   </Text>
   <Topic
     key="0"
-    topic={TopicModel {}}
+    topic={
+      TopicModel {
+        "members": Array [],
+        "trainers": Array [],
+      }
+    }
   />
   <Topic
     key="1"
-    topic={TopicModel {}}
+    topic={
+      TopicModel {
+        "members": Array [],
+        "trainers": Array [],
+      }
+    }
   />
 </React.Fragment>
 `;

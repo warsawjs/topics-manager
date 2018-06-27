@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TrainersList> should render 1`] = `
+<styled.figure>
+  <Text
+    margin="0 0 0.5em 0"
+    type="secondary"
+  >
+    Trenerzy
+  </Text>
+</styled.figure>
+`;
+
+exports[`<TrainersList> when trainers are provided should match snapshot 1`] = `
+<styled.figure>
+  <Text
+    margin="0 0 0.5em 0"
+    type="secondary"
+  >
+    Trenerzy
+  </Text>
+  <Trainer
+    key="0"
+    trainer={
+      UserModel {
+        "email": undefined,
+        "name": undefined,
+        "nickname": undefined,
+      }
+    }
+  />
+  <Trainer
+    key="1"
+    trainer={
+      UserModel {
+        "email": undefined,
+        "name": undefined,
+        "nickname": undefined,
+      }
+    }
+  />
+</styled.figure>
+`;

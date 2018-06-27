@@ -22,8 +22,14 @@ exports[`<TopicContainer> when there are no errors should match snapshot 1`] = `
     pending={true}
     topics={
       Array [
-        TopicModel {},
-        TopicModel {},
+        TopicModel {
+          "members": Array [],
+          "trainers": Array [],
+        },
+        TopicModel {
+          "members": Array [],
+          "trainers": Array [],
+        },
       ]
     }
   />

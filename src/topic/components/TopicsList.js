@@ -9,9 +9,7 @@ const TopicsList = ({ topics, pending }) => (
     <React.Fragment>
         <Text type='primary'>Zgłoszone tematy</Text>
         {pending && <ActivityIndicator/>}
-        <ul>
-            {topics.map((topic, index) => <Topic key={index} topic={topic}/>)}
-        </ul>
+        {topics.map((topic, index) => <Topic key={index} topic={topic}/>)}
     </React.Fragment>
 );
 
