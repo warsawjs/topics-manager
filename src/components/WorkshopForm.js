@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from './Button';
-import Container from '../shared/components/Container';
 import Text from './Text';
 import Colors from '../styles/Colors';
+import Section from './Section';
 
 const WorkshopForm = () => (
-    <Container type="section" backgroundColor={ Colors.yellow }>
+    <Section background={ Colors.yellow }>
         <Text type="secondary">Zgłoś propozycję warsztatów</Text>
         <Textarea placeholder="Temat"/>
         <Textarea placeholder="Opis" height="200px"/>
         <Button type="primary">Wyślij</Button>
-    </Container>
+    </Section>
 );
 
 const Textarea = styled.textarea`

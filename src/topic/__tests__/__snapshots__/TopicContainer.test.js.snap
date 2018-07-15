@@ -1,23 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TopicContainer> should match snapshot with error 1`] = `
-<Container
-  backgroundColor="#fff"
-  inner={true}
-  type="section"
->
+<Section>
   <p>
     test error message
   </p>
-</Container>
+</Section>
 `;
 
 exports[`<TopicContainer> when there are no errors should match snapshot 1`] = `
-<Container
-  backgroundColor="#fff"
-  inner={true}
-  type="section"
->
+<Section>
   <TopicsList
     pending={true}
     topics={
@@ -33,5 +25,5 @@ exports[`<TopicContainer> when there are no errors should match snapshot 1`] = `
       ]
     }
   />
-</Container>
+</Section>
 `;

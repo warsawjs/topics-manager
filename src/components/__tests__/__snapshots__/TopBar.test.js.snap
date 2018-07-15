@@ -1,25 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TopBar> should render 1`] = `
-<Container
-  backgroundColor="#000"
-  inner={false}
+<Section
+  background="#000"
 >
-  <styled.section>
-    <Text
-      color="#fff"
-      display="inline"
-      type="basic"
-    >
-      Zaloguj się
-    </Text>
-    <Button
-      marginLeft="10px"
-      onClick={[Function]}
-      type="primary"
-    >
-      Zaloguj
-    </Button>
-  </styled.section>
-</Container>
+  <Text
+    color="#fff"
+    display="inline"
+    type="basic"
+  >
+    Zaloguj się
+  </Text>
+  <Button
+    marginLeft="10px"
+    onClick={[Function]}
+    type="primary"
+  >
+    Zaloguj
+  </Button>
+</Section>
 `;

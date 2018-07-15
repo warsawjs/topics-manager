@@ -1,19 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import propTypes from 'prop-types';
 
-class Section extends Component {
-
-    render() {
-        return (
-            <Background background={ this.props.background }>
-                <Container>
-                    { this.props.children }
-                </Container>
-            </Background>
-        );
-    }
-
-}
+const Section = (props) => (
+    <Background background={ props.background }>
+        <Container>
+            { props.children }
+        </Container>
+    </Background>
+);
 
 const Background = styled.section`
     background-color: ${props => props.background || '#fff'};
@@ -25,5 +20,10 @@ const Container = styled.div`
     padding: 30px;
     max-width: 600px;
 `;
+
+Section.propTypes = {
+    background: propTypes.string,
+    children: propTypes.node,
+};
 
 export default Section;
