@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BecomeMemberContainer> when already attending to given topic should match snapshot 1`] = `
+<div>
+  <BecomeMemberContainer__ActionButton
+    onClick={[Function]}
+  >
+    <BecomeMemberContainer__ActionButtonSpanText>
+      Rezygnuję
+    </BecomeMemberContainer__ActionButtonSpanText>
+  </BecomeMemberContainer__ActionButton>
+</div>
+`;
+
+exports[`<BecomeMemberContainer> when not attending to given topic yet should match snapshot 1`] = `
+<div>
+  <BecomeMemberContainer__ActionButton
+    onClick={[Function]}
+  >
+    <BecomeMemberContainer__ActionButtonSpanText>
+      Chcę być uczestnikiem
+    </BecomeMemberContainer__ActionButtonSpanText>
+  </BecomeMemberContainer__ActionButton>
+</div>
+`;

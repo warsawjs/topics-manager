@@ -5,9 +5,10 @@ exports[`Should render <App /> should match snapshot 1`] = `
   <Connect(TopBar) />
   <Header />
   <main>
-    <WorkshopForm />
+    <Connect(WorkshopContainer) />
     <Connect(TopicContainer) />
   </main>
   <Connect(AuthCallbackContainer) />
+  <Connect(Database) />
 </React.Fragment>
 `;

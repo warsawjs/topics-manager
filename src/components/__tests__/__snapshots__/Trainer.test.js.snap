@@ -1,12 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Trainer> component should render 1`] = `
-<div>
+<div
+  style={Object {}}
+>
   <p>
     John Doe
-  </p>
-  <p>
-    john@doe.com
   </p>
 </div>
 `;

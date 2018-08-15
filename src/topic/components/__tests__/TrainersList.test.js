@@ -19,8 +19,8 @@ describe('<TrainersList>', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it('should have no trainers by default', () => {
-        expect(wrapper.find(Trainer).length).toEqual(0);
+    it('should have no additional trainers by default (only author)', () => {
+        expect(wrapper.find(Trainer).length).toEqual(1);
     });
 
     describe('when trainers are provided', () => {
@@ -36,8 +36,8 @@ describe('<TrainersList>', () => {
             expect(wrapper).toMatchSnapshot();
         });
 
-        it('should have exactly so much elements as passed to <TrainersList>', () => {
-            expect(wrapper.find(Trainer).length).toBe(trainers.length);
+        it('should have exactly so much elements as passed to <TrainersList> + one (author)', () => {
+            expect(wrapper.find(Trainer).length).toBe(trainers.length+1);
         });
     });
 

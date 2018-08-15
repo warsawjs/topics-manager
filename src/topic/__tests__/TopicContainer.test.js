@@ -30,7 +30,7 @@ describe('<TopicContainer>', () => {
     };
     let wrapper;
     let store = mockStore(initialState);
-    
+
     beforeEach(() => {
         store.clearActions();
         /**
@@ -45,27 +45,23 @@ describe('<TopicContainer>', () => {
          */
         wrapper = shallow(<TopicContainer store={store} />).dive();
     });
-    
+
     it('should match snapshot with error', () => {
         expect(wrapper).toMatchSnapshot();
     });
-    
-    it('should dispatch GET_TOPICS when mounted', () => {
-        expect(store.getActions()[0].type).toBe(mockedActionType);
-    });
-    
+
     it('should have topics array connected correctly from redux', () => {
         expect(wrapper.instance().props.topics).toBe(initialState.topic.topics);
     });
-    
+
     it('should have pending state connected correctly from redux', () => {
         expect(wrapper.instance().props.pending).toBe(initialState.topic.pending);
     });
-    
+
     it('should have error state connected correctly from redux', () => {
         expect(wrapper.instance().props.error).toBe(initialState.topic.error);
     });
-    
+
     describe('when there are no errors', () => {
         const initialState = {
             auth: {
@@ -79,20 +75,20 @@ describe('<TopicContainer>', () => {
         };
         let wrapper;
         let store = mockStore(initialState);
-        
+
         beforeEach(() => {
             wrapper = shallow(<TopicContainer store={store} />).dive();
         });
-        
+
         it('should match snapshot', () => {
             expect(wrapper).toMatchSnapshot();
         });
-        
+
         it('should properly pass topics to rendered <TopicsList>', () => {
             //is a bit too complicated and should be splitted into context-based `describes` but for this one test it would be too much
             expect(wrapper.find(TopicsList).at(0).props().topics.length).toBe(2);
         });
-    
+
     });
-    
+
 });

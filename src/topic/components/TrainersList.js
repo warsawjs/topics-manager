@@ -5,19 +5,23 @@ import PropTypes from 'prop-types';
 import {UserModel} from '../../shared/models/UserModel';
 import Trainer from '../../components/Trainer';
 
-const TrainersList = props => (
+const TrainersList = ({trainers, author}) => (
     <StyledTrainersList>
         <Text type="secondary" margin="0 0 0.5em 0">Trenerzy</Text>
-        {props.trainers.map((trainer, index) => <Trainer key={index} trainer={trainer}/>)}
+        <Trainer trainer={author} important/>
+        {trainers.map((trainer, index) => <Trainer key={index} trainer={trainer}/>)}
+        <button onClick={() => {}}>Chcę być trenerem</button>
     </StyledTrainersList>
 );
 
 TrainersList.propTypes = {
-    trainers: PropTypes.arrayOf(PropTypes.instanceOf(UserModel)).isRequired
+    trainers: PropTypes.arrayOf(PropTypes.instanceOf(UserModel)).isRequired,
+    author: PropTypes.instanceOf(UserModel).isRequired
 };
 
 TrainersList.defaultProps = {
-    trainers: []
+    trainers: [],
+    author: UserModel.fromBackend({})
 };
 
 const StyledTrainersList = styled.figure`

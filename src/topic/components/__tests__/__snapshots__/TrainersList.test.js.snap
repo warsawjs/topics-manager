@@ -1,18 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TrainersList> should render 1`] = `
-<styled.figure>
-  <Text
-    margin="0 0 0.5em 0"
-    type="secondary"
-  >
-    Trenerzy
-  </Text>
-</styled.figure>
-`;
-
-exports[`<TrainersList> when trainers are provided should match snapshot 1`] = `
-<styled.figure>
+<TrainersList__StyledTrainersList>
   <Text
     margin="0 0 0.5em 0"
     type="secondary"
@@ -20,12 +9,51 @@ exports[`<TrainersList> when trainers are provided should match snapshot 1`] = `
     Trenerzy
   </Text>
   <Trainer
+    important={true}
+    trainer={
+      UserModel {
+        "email": undefined,
+        "name": undefined,
+        "nickname": undefined,
+        "picture": undefined,
+      }
+    }
+  />
+  <button
+    onClick={[Function]}
+  >
+    Chcę być trenerem
+  </button>
+</TrainersList__StyledTrainersList>
+`;
+
+exports[`<TrainersList> when trainers are provided should match snapshot 1`] = `
+<TrainersList__StyledTrainersList>
+  <Text
+    margin="0 0 0.5em 0"
+    type="secondary"
+  >
+    Trenerzy
+  </Text>
+  <Trainer
+    important={true}
+    trainer={
+      UserModel {
+        "email": undefined,
+        "name": undefined,
+        "nickname": undefined,
+        "picture": undefined,
+      }
+    }
+  />
+  <Trainer
     key="0"
     trainer={
       UserModel {
         "email": undefined,
         "name": undefined,
         "nickname": undefined,
+        "picture": undefined,
       }
     }
   />
@@ -36,8 +64,14 @@ exports[`<TrainersList> when trainers are provided should match snapshot 1`] = `
         "email": undefined,
         "name": undefined,
         "nickname": undefined,
+        "picture": undefined,
       }
     }
   />
-</styled.figure>
+  <button
+    onClick={[Function]}
+  >
+    Chcę być trenerem
+  </button>
+</TrainersList__StyledTrainersList>
 `;

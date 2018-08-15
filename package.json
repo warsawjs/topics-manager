@@ -4,6 +4,9 @@
     "private": true,
     "dependencies": {
         "auth0-js": "^9.6.0",
+        "fbemitter": "^2.1.1",
+        "firebase": "^5.2.0",
+        "lodash-es": "^4.17.10",
         "prop-types": "^15.6.1",
         "react": "^16.3.2",
         "react-dom": "^16.3.2",
@@ -31,6 +34,7 @@
         "babel-core": "^6.26.3",
         "babel-eslint": "^8.2.3",
         "babel-jest": "^22.4.3",
+        "babel-plugin-styled-components": "^1.5.1",
         "babel-preset-env": "^1.6.1",
         "babel-preset-react": "^6.24.1",
         "babel-preset-stage-0": "^6.24.1",
@@ -52,6 +56,9 @@
         "verbose": true,
         "snapshotSerializers": [
             "enzyme-to-json/serializer"
+        ],
+        "transformIgnorePatterns": [
+            "/!node_modules\\/lodash-es/"
         ]
     },
     "husky": {
