@@ -16,25 +16,29 @@ export default class TopicService {
                 title: 'React Basic',
                 describe: 'Lorem ipsum',
                 trainers: TopicService.people,
-                members: TopicService.people
+                members: TopicService.people,
+                likes: 10,
             }),
         TopicModel.fromBackendData({
             title: 'React Native Basic',
             describe: 'Lorem ipsum',
             trainers: TopicService.people,
-            members: TopicService.people
+            members: TopicService.people,
+            likes: 39,
         }),
         TopicModel.fromBackendData({
             title: 'React + Redux',
             describe: 'Lorem ipsum',
             trainers: TopicService.people,
-            members: TopicService.people
+            members: TopicService.people,
+            likes: 13,
         }),
         TopicModel.fromBackendData({
             title: 'React + Redux + Thunk',
             describe: 'Lorem ipsum',
             trainers: TopicService.people,
-            members: TopicService.people
+            members: TopicService.people,
+            likes: 0,
         }),
     ];
 

@@ -9,6 +9,7 @@
         "react-dom": "^16.3.2",
         "react-redux": "^5.0.7",
         "react-scripts": "1.1.4",
+        "react-svg-piechart": "^2.1.1",
         "redux": "^4.0.0",
         "redux-thunk": "^2.2.0",
         "styled-components": "^3.2.6"

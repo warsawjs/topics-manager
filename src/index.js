@@ -9,10 +9,8 @@ import thunk from 'redux-thunk';
 
 import './styles/reset.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 
 const rootReducer = combineReducers({ topic: topicReducer, auth: authReducer });
-
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
@@ -21,4 +19,3 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root')
 );
-registerServiceWorker();

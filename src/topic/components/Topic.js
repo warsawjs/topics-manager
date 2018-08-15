@@ -10,7 +10,7 @@ const Topic = props => (
     <RowWrapper>
         <TopicDescription/>
         <TrainersList trainers={props.topic.trainers}/>
-        <Participants/>
+        <Participants likes={props.topic.likes}/>
     </RowWrapper>
 );
 
