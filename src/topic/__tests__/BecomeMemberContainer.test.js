@@ -74,7 +74,7 @@ describe('<BecomeMemberContainer>', () => {
         describe('when button is pressed', () => {
             beforeEach(() => {
                 wrapper
-                    .find('BecomeMemberContainer__ActionButton')
+                    .find('Button')
                     .at(0)
                     .props()
                     .onClick();

@@ -3,7 +3,8 @@
 exports[`<TopicsList> should render 1`] = `
 <React.Fragment>
   <Text
-    type="primary"
+    margin="20px 0"
+    type="header"
   >
     Zgłoszone tematy
   </Text>
@@ -13,7 +14,8 @@ exports[`<TopicsList> should render 1`] = `
 exports[`<TopicsList> when topics are loading should match snapshot 1`] = `
 <React.Fragment>
   <Text
-    type="primary"
+    margin="20px 0"
+    type="header"
   >
     Zgłoszone tematy
   </Text>
@@ -24,7 +26,8 @@ exports[`<TopicsList> when topics are loading should match snapshot 1`] = `
 exports[`<TopicsList> when topics are provided should match snapshot 1`] = `
 <React.Fragment>
   <Text
-    type="primary"
+    margin="20px 0"
+    type="header"
   >
     Zgłoszone tematy
   </Text>

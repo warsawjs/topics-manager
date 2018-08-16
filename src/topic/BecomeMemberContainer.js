@@ -5,6 +5,7 @@ import TopicModel from '../shared/models/TopicModel';
 import { becomeMember, leaveTopic } from '../actions/member.actions';
 import { UserModel } from '../shared/models/UserModel';
 import styled from 'styled-components';
+import Button from '../components/Button';
 
 class BecomeMemberContainer extends React.Component {
     render() {
@@ -22,15 +23,13 @@ class BecomeMemberContainer extends React.Component {
                     </LeaveButton>
                 )}
                 {!alreadyAttending && (
-                    <AttendButton
+                    <Button
                         onClick={() => {
                             attend(topic, user);
                         }}
                     >
-                        <MemberButtonSpanText>
-                            Chcę być uczestnikiem
-                        </MemberButtonSpanText>
-                    </AttendButton>
+                        Chcę być uczestnikiem
+                    </Button>
                 )}
             </div>
         );
@@ -41,10 +40,6 @@ class BecomeMemberContainer extends React.Component {
 export const ActionButton = styled.button`
     width: 201px;
     height: 40px;
-`;
-
-export const AttendButton = ActionButton.extend`
-    background-color: #e6cf42;
 `;
 
 const LeaveButton = ActionButton.extend`

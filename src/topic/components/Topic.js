@@ -19,13 +19,14 @@ Topic.propTypes = {
     likes: PropTypes.number,
 };
 
-const RowWrapper = styled.p`
+const RowWrapper = styled.div`
     width: 100%;
-    margin-top: 2em;
+    padding: 70px 0;
     display: flex;
     flex: start;
     justify-content: space-between;
     text-align: left;
+    border-bottom: 1px solid #e1e1e1;
 `;
 
 export default Topic;

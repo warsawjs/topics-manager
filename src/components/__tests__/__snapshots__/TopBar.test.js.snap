@@ -4,19 +4,55 @@ exports[`<TopBar> should render 1`] = `
 <Section
   background="#000"
 >
-  <Text
-    color="#fff"
-    display="inline"
-    type="basic"
-  >
-    Zaloguj się
-  </Text>
-  <Button
-    marginLeft="10px"
-    onClick={[Function]}
-    type="primary"
-  >
-    Zaloguj
-  </Button>
+  <TopBar__SpaceBetweenContainer>
+    <Text
+      display="inline"
+      margin="0 20px 0 0"
+      type="logo"
+    >
+      Warsaw
+      <strong>
+        JS
+      </strong>
+    </Text>
+    <TopBar__MenuList>
+      <TopBar__MenuLink>
+        Meetup
+      </TopBar__MenuLink>
+      <TopBar__MenuLink>
+        Worhshop
+      </TopBar__MenuLink>
+      <TopBar__MenuLink>
+        Praca
+      </TopBar__MenuLink>
+      <TopBar__MenuLink>
+        O nas
+      </TopBar__MenuLink>
+      <TopBar__MenuLink>
+        Archiwum
+      </TopBar__MenuLink>
+      <TopBar__MenuLink>
+        Formularz
+      </TopBar__MenuLink>
+      <TopBar__MenuLink>
+        Kontakt
+      </TopBar__MenuLink>
+      <TopBar__MenuLink>
+        Blog
+      </TopBar__MenuLink>
+    </TopBar__MenuList>
+    <Text
+      color="#fff"
+      display="inline"
+      type="basic"
+    />
+    <Button
+      marginLeft="10px"
+      onClick={[Function]}
+      type="primary"
+    >
+      Zaloguj
+    </Button>
+  </TopBar__SpaceBetweenContainer>
 </Section>
 `;

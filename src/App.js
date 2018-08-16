@@ -15,11 +15,11 @@ class App extends Component {
                 <TopBar />
                 <Header />
                 <main>
-                    <WorkshopContainer/>
+                    <WorkshopContainer />
                     <TopicContainer />
                 </main>
-                <AuthCallbackContainer/>
-                <Database/>
+                <AuthCallbackContainer />
+                <Database />
             </React.Fragment>
         );
     }
@@ -27,8 +27,9 @@ class App extends Component {
 
 /* eslint no-unused-expressions: 0 */
 injectGlobal`
-    @import url('https://fonts.googleapis.com/css?family=Lato');
-
+    @import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+    @import url('https://fonts.googleapis.com/css?family=Fira+Sans:300');
+    
     html {
         box-sizing: border-box;
     }

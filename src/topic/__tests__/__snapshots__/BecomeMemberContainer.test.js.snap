@@ -14,12 +14,10 @@ exports[`<BecomeMemberContainer> when already attending to given topic should ma
 
 exports[`<BecomeMemberContainer> when not attending to given topic yet should match snapshot 1`] = `
 <div>
-  <BecomeMemberContainer__ActionButton
+  <Button
     onClick={[Function]}
   >
-    <BecomeMemberContainer__ActionButtonSpanText>
-      Chcę być uczestnikiem
-    </BecomeMemberContainer__ActionButtonSpanText>
-  </BecomeMemberContainer__ActionButton>
+    Chcę być uczestnikiem
+  </Button>
 </div>
 `;

@@ -9,7 +9,7 @@ export class UserModel {
             email: userData.email,
             name: userData.name,
             nickname: userData.nickname,
-            picture: userData.picture
+            picture: userData.picture,
         });
     }
 
@@ -18,7 +18,7 @@ export class UserModel {
             email: this.email,
             name: this.name,
             nickname: this.nickname,
-            picture: this.picture
+            picture: this.picture,
         };
     }
 }

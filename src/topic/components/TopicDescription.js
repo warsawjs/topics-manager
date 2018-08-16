@@ -6,12 +6,10 @@ import styled from 'styled-components';
 
 const TopicDescription = props => (
     <StyledTopicDescription>
-        <Text type="secondary" margin="0 0 0.5em 0" color={ Colors.red }>
+        <Text type="primary" margin="0 0 5px 0" color={Colors.red}>
             {props.title}
         </Text>
-        <Text>
-            {props.description}
-        </Text>
+        <Text type="basic">{props.description}</Text>
     </StyledTopicDescription>
 );
 

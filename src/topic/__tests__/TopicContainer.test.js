@@ -11,7 +11,7 @@ import TopicsList from '../components/TopicsList';
 const mockedActionType = 'TopicContainerAction';
 
 jest.mock('../../actions/topic.actions', () => ({
-    getTopics: () => ({ type: mockedActionType })
+    getTopics: () => ({ type: mockedActionType }),
 }));
 
 configure({ adapter: new Adapter() });
@@ -20,13 +20,13 @@ const mockStore = configureMockStore([thunk]);
 describe('<TopicContainer>', () => {
     const initialState = {
         auth: {
-            loggedUser: false
+            loggedUser: false,
         },
         topic: {
             pending: true,
             error: 'test error message',
-            topics: [TopicModel.fromBackendData({})]
-        }
+            topics: [TopicModel.fromBackendData({})],
+        },
     };
     let wrapper;
     let store = mockStore(initialState);
@@ -55,7 +55,9 @@ describe('<TopicContainer>', () => {
     });
 
     it('should have pending state connected correctly from redux', () => {
-        expect(wrapper.instance().props.pending).toBe(initialState.topic.pending);
+        expect(wrapper.instance().props.pending).toBe(
+            initialState.topic.pending
+        );
     });
 
     it('should have error state connected correctly from redux', () => {
@@ -65,13 +67,16 @@ describe('<TopicContainer>', () => {
     describe('when there are no errors', () => {
         const initialState = {
             auth: {
-                loggedUser: false
+                loggedUser: false,
             },
             topic: {
                 pending: true,
                 error: null,
-                topics: [TopicModel.fromBackendData({}), TopicModel.fromBackendData({})]
-            }
+                topics: [
+                    TopicModel.fromBackendData({}),
+                    TopicModel.fromBackendData({}),
+                ],
+            },
         };
         let wrapper;
         let store = mockStore(initialState);
@@ -86,9 +91,12 @@ describe('<TopicContainer>', () => {
 
         it('should properly pass topics to rendered <TopicsList>', () => {
             //is a bit too complicated and should be splitted into context-based `describes` but for this one test it would be too much
-            expect(wrapper.find(TopicsList).at(0).props().topics.length).toBe(2);
+            expect(
+                wrapper
+                    .find(TopicsList)
+                    .at(0)
+                    .props().topics.length
+            ).toBe(2);
         });
-
     });
-
 });

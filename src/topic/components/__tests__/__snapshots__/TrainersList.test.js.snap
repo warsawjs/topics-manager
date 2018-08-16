@@ -1,77 +1,81 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<TrainersList> should render 1`] = `
-<TrainersList__StyledTrainersList>
+<TrainersList__StyledTrainersContainer>
   <Text
     margin="0 0 0.5em 0"
-    type="secondary"
+    type="primary"
   >
     Trenerzy
   </Text>
-  <Trainer
-    important={true}
-    trainer={
-      UserModel {
-        "email": undefined,
-        "name": undefined,
-        "nickname": undefined,
-        "picture": undefined,
+  <TrainersList__StyledTrainersList>
+    <Trainer
+      important={true}
+      trainer={
+        UserModel {
+          "email": undefined,
+          "name": undefined,
+          "nickname": undefined,
+          "picture": undefined,
+        }
       }
-    }
-  />
-  <button
-    onClick={[Function]}
+    />
+  </TrainersList__StyledTrainersList>
+  <Button
+    type="primary"
   >
     Chcę być trenerem
-  </button>
-</TrainersList__StyledTrainersList>
+  </Button>
+</TrainersList__StyledTrainersContainer>
 `;
 
 exports[`<TrainersList> when trainers are provided should match snapshot 1`] = `
-<TrainersList__StyledTrainersList>
+<TrainersList__StyledTrainersContainer>
   <Text
     margin="0 0 0.5em 0"
-    type="secondary"
+    type="primary"
   >
     Trenerzy
   </Text>
-  <Trainer
-    important={true}
-    trainer={
-      UserModel {
-        "email": undefined,
-        "name": undefined,
-        "nickname": undefined,
-        "picture": undefined,
+  <TrainersList__StyledTrainersList>
+    <Trainer
+      important={true}
+      trainer={
+        UserModel {
+          "email": undefined,
+          "name": undefined,
+          "nickname": undefined,
+          "picture": undefined,
+        }
       }
-    }
-  />
-  <Trainer
-    key="0"
-    trainer={
-      UserModel {
-        "email": undefined,
-        "name": undefined,
-        "nickname": undefined,
-        "picture": undefined,
+    />
+    <Trainer
+      key="0"
+      trainer={
+        UserModel {
+          "email": undefined,
+          "name": undefined,
+          "nickname": undefined,
+          "picture": undefined,
+        }
       }
-    }
-  />
-  <Trainer
-    key="1"
-    trainer={
-      UserModel {
-        "email": undefined,
-        "name": undefined,
-        "nickname": undefined,
-        "picture": undefined,
+    />
+    <Trainer
+      key="1"
+      trainer={
+        UserModel {
+          "email": undefined,
+          "name": undefined,
+          "nickname": undefined,
+          "picture": undefined,
+        }
       }
-    }
-  />
-  <button
-    onClick={[Function]}
+    />
+  </TrainersList__StyledTrainersList>
+  <Button
+    type="primary"
   >
     Chcę być trenerem
-  </button>
-</TrainersList__StyledTrainersList>
+  </Button>
+</TrainersList__StyledTrainersContainer>
 `;
