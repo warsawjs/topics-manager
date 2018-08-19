@@ -12,6 +12,7 @@ import {
     MEMBER_LEAVE_REQUEST,
     MEMBER_SUBMIT_REQUEST,
 } from '../../actions/action_types';
+import PrimaryButton from '../../lib/PrimaryActionButton';
 
 const mockedActionType = 'TopicContainerAction';
 
@@ -74,7 +75,7 @@ describe('<BecomeMemberContainer>', () => {
         describe('when button is pressed', () => {
             beforeEach(() => {
                 wrapper
-                    .find('Button')
+                    .find(PrimaryButton)
                     .at(0)
                     .props()
                     .onClick();
@@ -113,7 +114,7 @@ describe('<BecomeMemberContainer>', () => {
         describe('when button is pressed', () => {
             beforeEach(() => {
                 wrapper
-                    .find('BecomeMemberContainer__ActionButton')
+                    .find(PrimaryButton)
                     .at(0)
                     .props()
                     .onClick();

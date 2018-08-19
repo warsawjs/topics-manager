@@ -2,12 +2,13 @@ import React from 'react';
 import Text from '../../components/Text';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Button from '../../components/Button';
 import { UserModel } from '../../shared/models/UserModel';
 import Trainer from '../../components/Trainer';
+import TopicModel from '../../shared/models/TopicModel';
+import BecomeTrainerContainer from '../BecomeTrainerContainer';
 import Colors from '../../styles/Colors';
 
-const TrainersList = ({ trainers, author }) => (
+const TrainersList = ({ trainers, author, topic }) => (
     <StyledTrainersContainer>
         <Text type="primary" margin="0 0 0.5em 0">
             Trenerzy
@@ -18,12 +19,13 @@ const TrainersList = ({ trainers, author }) => (
                 <Trainer key={index} trainer={trainer} />
             ))}
         </StyledTrainersList>
-        <Button type="primary">Chcę być trenerem</Button>
+        <BecomeTrainerContainer topic={topic} />
     </StyledTrainersContainer>
 );
 
 TrainersList.propTypes = {
     trainers: PropTypes.arrayOf(PropTypes.instanceOf(UserModel)).isRequired,
+    topic: PropTypes.instanceOf(TopicModel).isRequired,
     author: PropTypes.instanceOf(UserModel).isRequired,
 };
 

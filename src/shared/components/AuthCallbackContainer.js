@@ -2,36 +2,45 @@ import React from 'react';
 import { AuthService } from '../services/AuthService';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { loginError, loginSuccess, restoreSession } from '../../actions/auth.actions';
+import {
+    loginError,
+    loginSuccess,
+    restoreSession,
+} from '../../actions/auth.actions';
 
 class AuthCallbackContainer extends React.Component {
-    
     componentDidMount() {
         this.props.restoreSession(); //check if logged, dispatch relevant events if success
-    
+
         AuthService.handleAuthentication()
-            .then((user) => {
-                if (user) this.props.loginSuccess(user);
+            .then(user => {
+                if (user) {
+                    this.props.loginSuccess(user);
+                    // TODO how to? this.history.push('/');
+                    window.location = '/';
+                }
             })
             .catch(this.props.loginError);
     }
-    
+
     render() {
-        return <div/>;
+        return <div />;
     }
 }
 
 AuthCallbackContainer.propTypes = {
     loginSuccess: PropTypes.func,
     loginError: PropTypes.func,
-    restoreSession: PropTypes.func
+    restoreSession: PropTypes.func,
 };
 
 const mapDispatchToProps = dispatch => ({
-    loginError: (error) => dispatch(loginError(error)),
-    loginSuccess: (userData) => dispatch(loginSuccess(userData)),
-    restoreSession: () => dispatch(restoreSession())
-    
+    loginError: error => dispatch(loginError(error)),
+    loginSuccess: userData => dispatch(loginSuccess(userData)),
+    restoreSession: () => dispatch(restoreSession()),
 });
 
-export default connect(null, mapDispatchToProps)(AuthCallbackContainer);
+export default connect(
+    null,
+    mapDispatchToProps
+)(AuthCallbackContainer);

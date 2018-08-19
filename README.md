@@ -27,30 +27,30 @@ Simply explained here: https://css-tricks.com/poll-results-how-do-you-order-your
 
 ### List view of all workshop proposals
 
-- [ ] the main list component
+- [x] the main list component
 - [ ] toggle between compact and broad
 
 ### Show view
 
-- [ ] subject of the workshop
+- [x] subject of the workshop
 - [ ] list of trainers who want to join
-- [ ] highlighting of the autor (first trainer)
+- [x] highlighting of the autor (first trainer)
 
 #### Buttons
 
-- [ ] Voting - for the community
+- [x] Voting - for the community
 - [ ] secure from multiple votes
 - [ ] secure from multiple signups by one trainer
-- [ ] from for adding a new subject
-    - [ ] View for a signup user
-    - [ ] Reset after issue of the form
-    - [ ] Saving form data
+- [x] from for adding a new subject
+    - [x] View for a signup user
+    - [x] Reset after issue of the form
+    - [x] Saving form data
     - [ ] Edition of the saved subjects
 - [ ] Showing the basic data about the signed up trainers
-    - [ ] add authorization
-    - [ ] Use GitHub API integration or `hello.js`
-    - [ ] Sign in
-    - [ ] Logout
+    - [x] add authorization
+    - [x] Use GitHub API integration or `hello.js`
+    - [x] Sign in
+    - [x] Logout
 
 ## Additional features :star:
 

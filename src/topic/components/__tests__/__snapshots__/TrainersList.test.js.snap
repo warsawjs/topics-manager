@@ -21,11 +21,7 @@ exports[`<TrainersList> should render 1`] = `
       }
     />
   </TrainersList__StyledTrainersList>
-  <Button
-    type="primary"
-  >
-    Chcę być trenerem
-  </Button>
+  <Connect(BecomeTrainerContainer) />
 </TrainersList__StyledTrainersContainer>
 `;
 
@@ -72,10 +68,6 @@ exports[`<TrainersList> when trainers are provided should match snapshot 1`] = `
       }
     />
   </TrainersList__StyledTrainersList>
-  <Button
-    type="primary"
-  >
-    Chcę być trenerem
-  </Button>
+  <Connect(BecomeTrainerContainer) />
 </TrainersList__StyledTrainersContainer>
 `;

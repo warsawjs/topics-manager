@@ -2,34 +2,34 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TopicModel from '../shared/models/TopicModel';
-import { becomeMember, leaveTopic } from '../actions/member.actions';
 import { UserModel } from '../shared/models/UserModel';
 import PrimaryButton from '../lib/PrimaryActionButton';
+import { becomeTrainer, signOffTrainer } from '../actions/trainer.actions';
 
-class BecomeMemberContainer extends React.Component {
-    leaveTopic = () => {
+class BecomeTrainerContainer extends React.Component {
+    leave = () => {
         const { topic, user, leave } = this.props;
         leave(topic, user);
     };
 
-    attendTopic = () => {
+    attend = () => {
         const { topic, user, attend } = this.props;
         attend(topic, user);
     };
 
     render() {
         const { topic, user } = this.props;
-        const alreadyAttending = topic.amIAttending(user);
+        const alreadyAttending = topic.amITrainer(user);
         return (
             <div>
                 {alreadyAttending && (
-                    <PrimaryButton onClick={this.leaveTopic}>
+                    <PrimaryButton onClick={this.leave}>
                         Rezygnuję
                     </PrimaryButton>
                 )}
                 {!alreadyAttending && (
-                    <PrimaryButton onClick={this.attendTopic}>
-                        Chcę być uczestnikiem
+                    <PrimaryButton onClick={this.attend}>
+                        Chcę być trenerem
                     </PrimaryButton>
                 )}
             </div>
@@ -42,11 +42,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    attend: (topic, user) => dispatch(becomeMember(topic, user)),
-    leave: (topic, user) => dispatch(leaveTopic(topic, user)),
+    attend: (topic, user) => dispatch(becomeTrainer(topic, user)),
+    leave: (topic, user) => dispatch(signOffTrainer(topic, user)),
 });
 
-BecomeMemberContainer.propTypes = {
+BecomeTrainerContainer.propTypes = {
     attend: PropTypes.func.isRequired,
     leave: PropTypes.func.isRequired,
     user: PropTypes.instanceOf(UserModel).isRequired,
@@ -56,4 +56,4 @@ BecomeMemberContainer.propTypes = {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(BecomeMemberContainer);
+)(BecomeTrainerContainer);

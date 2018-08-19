@@ -6,17 +6,20 @@ import Participants from './Participants';
 import PropTypes from 'prop-types';
 import TopicModel from '../../shared/models/TopicModel';
 
-const Topic = ({ topic, likes }) => (
+const Topic = ({ topic }) => (
     <RowWrapper>
         <TopicDescription title={topic.title} description={topic.description} />
-        <TrainersList trainers={topic.trainers} author={topic.author} />
-        <Participants topic={topic} likes={likes} />
+        <TrainersList
+            trainers={topic.trainers}
+            author={topic.author}
+            topic={topic}
+        />
+        <Participants topic={topic} likes={topic.members.length} />
     </RowWrapper>
 );
 
 Topic.propTypes = {
     topic: PropTypes.instanceOf(TopicModel).isRequired,
-    likes: PropTypes.number,
 };
 
 const RowWrapper = styled.div`
