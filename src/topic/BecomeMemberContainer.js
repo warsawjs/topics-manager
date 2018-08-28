@@ -3,36 +3,32 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TopicModel from '../shared/models/TopicModel';
 import { becomeMember, leaveTopic } from '../actions/member.actions';
+import 'react-awesome-popover/dest/react-awesome-popover.css';
+import JoinWorkshopContainer from './components/JoinWorkshopContainer';
 import { UserModel } from '../shared/models/UserModel';
-import PrimaryButton from '../lib/PrimaryActionButton';
 
 class BecomeMemberContainer extends React.Component {
-    leaveTopic = () => {
+    leave = () => {
         const { topic, user, leave } = this.props;
         leave(topic, user);
     };
 
-    attendTopic = () => {
+    attend = () => {
         const { topic, user, attend } = this.props;
         attend(topic, user);
     };
 
     render() {
         const { topic, user } = this.props;
-        const alreadyAttending = topic.amIAttending(user);
         return (
-            <div>
-                {alreadyAttending && (
-                    <PrimaryButton onClick={this.leaveTopic}>
-                        Rezygnuję
-                    </PrimaryButton>
-                )}
-                {!alreadyAttending && (
-                    <PrimaryButton onClick={this.attendTopic}>
-                        Chcę być uczestnikiem
-                    </PrimaryButton>
-                )}
-            </div>
+            <JoinWorkshopContainer
+                alreadyAttending={topic.amIAttending(user)}
+                anonymous={!user}
+                joinText="Chcę być uczestnikiem"
+                leaveText="Rezygnuję"
+                attend={this.attend}
+                leave={this.leave}
+            />
         );
     }
 }
@@ -49,7 +45,7 @@ const mapDispatchToProps = dispatch => ({
 BecomeMemberContainer.propTypes = {
     attend: PropTypes.func.isRequired,
     leave: PropTypes.func.isRequired,
-    user: PropTypes.instanceOf(UserModel).isRequired,
+    user: PropTypes.instanceOf(UserModel),
     topic: PropTypes.instanceOf(TopicModel).isRequired,
 };
 

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TopicModel from '../shared/models/TopicModel';
-import { UserModel } from '../shared/models/UserModel';
-import PrimaryButton from '../lib/PrimaryActionButton';
 import { becomeTrainer, signOffTrainer } from '../actions/trainer.actions';
+import JoinWorkshopContainer from './components/JoinWorkshopContainer';
+import { UserModel } from '../shared/models/UserModel';
 
 class BecomeTrainerContainer extends React.Component {
     leave = () => {
@@ -19,20 +19,15 @@ class BecomeTrainerContainer extends React.Component {
 
     render() {
         const { topic, user } = this.props;
-        const alreadyAttending = topic.amITrainer(user);
         return (
-            <div>
-                {alreadyAttending && (
-                    <PrimaryButton onClick={this.leave}>
-                        Rezygnuję
-                    </PrimaryButton>
-                )}
-                {!alreadyAttending && (
-                    <PrimaryButton onClick={this.attend}>
-                        Chcę być trenerem
-                    </PrimaryButton>
-                )}
-            </div>
+            <JoinWorkshopContainer
+                alreadyAttending={topic.amITrainer(user)}
+                anonymous={!user}
+                joinText="Chcę być trenerem"
+                leaveText="Rezygnuję"
+                attend={this.attend}
+                leave={this.leave}
+            />
         );
     }
 }
@@ -49,7 +44,7 @@ const mapDispatchToProps = dispatch => ({
 BecomeTrainerContainer.propTypes = {
     attend: PropTypes.func.isRequired,
     leave: PropTypes.func.isRequired,
-    user: PropTypes.instanceOf(UserModel).isRequired,
+    user: PropTypes.instanceOf(UserModel),
     topic: PropTypes.instanceOf(TopicModel).isRequired,
 };
 

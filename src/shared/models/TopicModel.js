@@ -26,14 +26,14 @@ export default class TopicModel {
     }
 
     amIAttending(myself) {
-        return myself && find(this.members, { email: myself.email });
+        return Boolean(myself && find(this.members, { email: myself.email }));
     }
 
     amITrainer(myself) {
-        return (
+        return Boolean(
             myself &&
-            (this.author.email === myself.email ||
-                find(this.trainers, { email: myself.email }))
+                (this.author.email === myself.email ||
+                    find(this.trainers, { email: myself.email }))
         );
     }
 }

@@ -10,6 +10,7 @@ class WorkshopContainer extends React.Component {
         return (
             <div>
                 <WorkshopForm
+                    logged={this.props.logged}
                     onClick={this.props.submitTopic}
                     author={this.props.author}
                 />
@@ -24,11 +25,13 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
     author: state.auth.user,
+    logged: state.auth.logged,
 });
 
 WorkshopContainer.propTypes = {
     submitTopic: PropTypes.func.submitTopic,
     author: PropTypes.instanceOf(GithubUserModel).isRequired,
+    logged: PropTypes.bool.isRequired,
 };
 
 export default connect(

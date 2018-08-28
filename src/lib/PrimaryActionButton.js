@@ -6,6 +6,13 @@ export const ActionButton = styled.button`
     width: 201px;
     height: 40px;
     background-color: #e6cf42;
+    &:disabled {
+        background-color: #7f7f7f;
+    }
+
+    &:disabled > span {
+        color: white;
+    }
 `;
 
 export const ActionButtonSpanText = styled.span`

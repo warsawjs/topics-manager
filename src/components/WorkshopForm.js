@@ -8,6 +8,7 @@ import Section from './Section';
 
 import TopicModel from '../shared/models/TopicModel';
 import { GithubUserModel } from '../shared/models/GithubUserModel';
+import { withAuthPopover } from '../shared/withAuthPopover';
 
 class WorkshopForm extends React.Component {
     state = {
@@ -21,8 +22,12 @@ class WorkshopForm extends React.Component {
         });
     };
 
+    enableTooltipForAnonymous = (anonymous, component) => {
+        return anonymous ? withAuthPopover(component) : component;
+    };
+
     render() {
-        const { onClick, author } = this.props;
+        const { onClick, author, logged } = this.props;
         const { title, description } = this.state;
 
         return (
@@ -44,20 +49,24 @@ class WorkshopForm extends React.Component {
                     />
                 </Centered>
                 <RightAligned>
-                    <Button
-                        type="primary"
-                        onClick={() => {
-                            onClick(
-                                TopicModel.fromBackendData({
-                                    title,
-                                    description,
-                                }),
-                                author
-                            );
-                        }}
-                    >
-                        Wyślij
-                    </Button>
+                    {this.enableTooltipForAnonymous(
+                        !logged,
+                        <Button
+                            type="primary"
+                            disabled={!logged}
+                            onClick={() => {
+                                onClick(
+                                    TopicModel.fromBackendData({
+                                        title,
+                                        description,
+                                    }),
+                                    author
+                                );
+                            }}
+                        >
+                            Wyślij
+                        </Button>
+                    )}
                 </RightAligned>
             </Section>
         );
@@ -87,6 +96,7 @@ const RightAligned = styled.div`
 WorkshopForm.propTypes = {
     onClick: PropTypes.func.isRequired,
     author: PropTypes.instanceOf(GithubUserModel).isRequired,
+    logged: PropTypes.bool.isRequired,
 };
 
 export default WorkshopForm;
