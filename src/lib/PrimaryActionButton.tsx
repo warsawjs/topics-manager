@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 export const ActionButton = styled.button`
     width: 201px;
@@ -34,9 +33,5 @@ const PrimaryButton = props => (
         <ActionButtonSpanText>{props.children}</ActionButtonSpanText>{' '}
     </ActionButton>
 );
-
-PrimaryButton.propTypes = {
-    children: PropTypes.any,
-};
 
 export default PrimaryButton;

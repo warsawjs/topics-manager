@@ -13,23 +13,30 @@
         "react-dom": "^16.3.2",
         "react-redux": "^5.0.7",
         "react-scripts": "1.1.4",
+        "react-scripts-ts": "^2.17.0",
         "react-svg-piechart": "^2.1.1",
         "redux": "^4.0.0",
         "redux-thunk": "^2.2.0",
-        "styled-components": "^3.2.6"
+        "styled-components": "^3.2.6",
+        "tslint": "^5.11.0",
+        "typescript": "^3.0.3"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
+        "start": "react-scripts-ts start",
+        "build": "react-scripts-ts build",
         "test": "jest",
         "test:watch": "jest --watch",
-        "test:coverage": "jest --coverage  --collectCoverageFrom=**/src/**/*.js",
-        "eject": "react-scripts eject",
+        "test:coverage": "jest --coverage  --collectCoverageFrom=**/src/**/*.ts",
+        "eject": "react-scripts-ts eject",
         "precommit": "lint-staged",
-        "format": "prettier src/**/*.js",
-        "format:write": "prettier --write src/**/*.js"
+        "format": "prettier src/**/*.ts",
+        "format:write": "prettier --write src/**/*.ts"
     },
     "devDependencies": {
+        "@types/jest": "^23.3.1",
+        "@types/node": "^10.9.4",
+        "@types/react": "^16.4.13",
+        "@types/react-dom": "^16.0.7",
         "ajv": "^6.5.0",
         "ajv-keywords": "^3.2.0",
         "babel-core": "^6.26.3",
@@ -47,14 +54,21 @@
         "eslint-plugin-react": "^7.8.2",
         "husky": "^1.0.0-rc.6",
         "identity-obj-proxy": "^3.0.0",
+        "install": "^0.12.1",
         "jest": "^22.4.3",
         "jest-styled-components": "^5.0.1",
         "lint-staged": "^7.1.2",
+        "npm": "^6.4.1",
+        "or": "^0.2.0",
         "prettier": "1.13.4",
         "react-test-renderer": "^16.4.0",
-        "redux-mock-store": "^1.5.1"
+        "redux-mock-store": "^1.5.1",
+        "ts-jest": "^23.1.4"
     },
     "jest": {
+        "transform": {
+            "^.+\\.tsx?$": "ts-jest"
+        },
         "verbose": true,
         "snapshotSerializers": [
             "enzyme-to-json/serializer"
@@ -64,7 +78,15 @@
         ],
         "moduleNameMapper": {
             "\\.(css|less)$": "identity-obj-proxy"
-        }
+        },
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "jsx",
+            "json",
+            "node"
+        ]
     },
     "husky": {
         "hooks": {
@@ -75,7 +97,7 @@
     "lint-staged": {
         "src/**/*.js": [
             "prettier --write",
-            "eslint --fix",
+            "tslint --fix",
             "git add"
         ]
     }
