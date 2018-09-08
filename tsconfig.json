@@ -6,7 +6,6 @@
         "module": "esnext",
         "target": "es5",
         "lib": [
-            "es6",
             "dom",
             "es2018"
         ],
@@ -18,11 +17,8 @@
         "forceConsistentCasingInFileNames": true,
         "noImplicitReturns": true,
         "noImplicitThis": true,
-        "noImplicitAny": false,
-        //temporal
-        "strictNullChecks": false,
         "suppressImplicitAnyIndexErrors": true,
         "noUnusedLocals": true,
-        "allowSyntheticDefaultImports": true,
+        "allowSyntheticDefaultImports": true
     }
 }

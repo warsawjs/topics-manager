@@ -1,4 +1,4 @@
-import { GithubUserModel } from '../../models/GithubUserModel';
+import { GithubUser } from '../../models/github-user';
 import TopicModel from '../../models/TopicModel';
 import TopicService, {
     ALREADY_ATTENDING,
@@ -14,7 +14,7 @@ describe('TopicService', () => {
         let author, member, topic;
 
         beforeEach(() => {
-            author = GithubUserModel.fromBackend({
+            author = GithubUser.fromBackend({
                 email: emailOne,
             });
         });
@@ -35,7 +35,7 @@ describe('TopicService', () => {
 
         describe('when user is a trainer at the same time', () => {
             beforeEach(() => {
-                member = GithubUserModel.fromBackend({
+                member = GithubUser.fromBackend({
                     email: emailTwo,
                 });
                 topic = TopicModel.fromBackendData({
@@ -53,7 +53,7 @@ describe('TopicService', () => {
 
         describe('when user is already a member', () => {
             beforeEach(() => {
-                member = GithubUserModel.fromBackend({
+                member = GithubUser.fromBackend({
                     email: emailTwo,
                 });
                 topic = TopicModel.fromBackendData({

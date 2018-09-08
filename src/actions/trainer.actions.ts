@@ -1,15 +1,15 @@
 import TopicService from '../shared/services/TopicService';
 import {
     TRAINER_LEAVE_REQUEST,
-    TRAINER_LEAVE_REQUEST_SUCCESS,
     TRAINER_LEAVE_REQUEST_ERROR,
+    TRAINER_LEAVE_REQUEST_SUCCESS,
     TRAINER_SUBMIT_REQUEST,
     TRAINER_SUBMIT_REQUEST_ERROR,
     TRAINER_SUBMIT_REQUEST_SUCCESS,
 } from './action_types';
 
 export const becomeTrainer = (topic, user) => {
-    return function(dispatch) {
+    return dispatch => {
         dispatch(becomeTrainerInit());
         return TopicService.signUpAsTrainer(topic, user)
             .then(() => {
@@ -41,7 +41,7 @@ export const becomeTrainerError = error => {
 };
 
 export const signOffTrainer = (topic, user) => {
-    return function(dispatch) {
+    return dispatch => {
         dispatch(signOffTrainerInit());
         return TopicService.signOffTrainer(topic, user)
             .then(() => {

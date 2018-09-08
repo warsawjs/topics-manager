@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-
-import Text from './Text';
 import Section from './Section';
 
+import Text from './Text';
+
 class Header extends Component {
-    render() {
+    public render() {
         return (
             <Section>
                 <Centered>
-                    <Text type="header" margin="30px">
+                    <Text type="header" style={{ margin: '30px' }}>
                         Stwórz Workshop!
                     </Text>
-                    <Text type="secondary" margin="0 50px 40px">
+                    <Text type="secondary" style={{ margin: '0 50px 40px' }}>
                         Scratch the furniture i like big cats and i can not lie.
                         Making sure that fluff gets into the owner’s eyes ask
                         for petting then cats take over the world and need to

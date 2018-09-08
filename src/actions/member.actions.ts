@@ -9,7 +9,7 @@ import {
 } from './action_types';
 
 export const becomeMember = (topic, user) => {
-    return function(dispatch) {
+    return dispatch => {
         dispatch(becomeMemberInit());
         return TopicService.attend(topic, user)
             .then(() => {
@@ -41,7 +41,7 @@ export const becomeMemberError = error => {
 };
 
 export const leaveTopic = (topic, user) => {
-    return function(dispatch) {
+    return dispatch => {
         dispatch(leaveTopicInit());
         return TopicService.leave(topic, user)
             .then(() => {

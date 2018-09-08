@@ -4,7 +4,7 @@ import 'jest-styled-components';
 import Adapter from 'enzyme-adapter-react-16';
 import {configure} from 'enzyme/build/index';
 import Trainer from '../Trainer';
-import {UserModel} from '../../shared/models/UserModel';
+import {UserModel} from '../../shared/models/user';
 
 configure({adapter: new Adapter()});
 

@@ -1,11 +1,14 @@
-import { topicFetchInit } from '../../actions/topic.actions';
+import TopicModel from '../../shared/models/TopicModel';
 import {
     TOPICS_GET_REQUEST,
     TOPICS_GET_REQUEST_ERROR,
     TOPICS_GET_REQUEST_SUCCESS,
 } from '../action_types';
-import TopicModel from '../../shared/models/TopicModel';
-import { topicsFetched, topicsFetchError } from '../topic.actions';
+import {
+    topicFetchInit,
+    topicsFetched,
+    topicsFetchError,
+} from '../topic.actions';
 
 describe('topics action creators', () => {
     describe('when fetch start is called', () => {

@@ -1,31 +1,31 @@
 import React, { Component } from 'react';
 import { injectGlobal } from 'styled-components';
-import TopBar from './components/TopBar';
 import Header from './components/Header';
-import TopicContainer from './topic/TopicContainer';
+import TopBar from './components/TopBar';
 
 import AuthCallbackContainer from './shared/components/AuthCallbackContainer';
 import Database from './shared/components/Database';
 import WorkshopContainer from './submit/WorkshopContainer';
+import TopicContainer from './topic/TopicContainer';
 
 class App extends Component {
-    render() {
+    public render() {
         return (
             <React.Fragment>
-                <TopBar />
-                <Header />
+                <TopBar/>
+                <Header/>
                 <main>
-                    <WorkshopContainer />
-                    <TopicContainer />
+                    <WorkshopContainer/>
+                    <TopicContainer/>
                 </main>
-                <AuthCallbackContainer />
-                <Database />
+                <AuthCallbackContainer/>
+                <Database/>
             </React.Fragment>
         );
     }
 }
 
-/* eslint no-unused-expressions: 0 */
+// tslint:disable-next-line
 injectGlobal`
     @import url('https://fonts.googleapis.com/css?family=Lato:300,400');
     @import url('https://fonts.googleapis.com/css?family=Fira+Sans:300');

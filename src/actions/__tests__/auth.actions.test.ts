@@ -1,17 +1,24 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { Error } from 'tslint/lib/error';
-import { LOGIN_REQUEST, LOGIN_REQUEST_ERROR, LOGIN_REQUEST_SUCCESS } from '../action_types';
 import { initialState } from '../../reducers/auth.reducer';
-import { loginError, loginPending, loginSuccess, requestLogin } from '../auth.actions';
-import { GithubUserModel } from '../../shared/models/GithubUserModel';
 import { AuthService } from '../../shared/services/AuthService';
+import {
+    LOGIN_REQUEST,
+    LOGIN_REQUEST_ERROR,
+    LOGIN_REQUEST_SUCCESS,
+} from '../action_types';
+import {
+    loginError,
+    loginPending,
+    loginSuccess,
+    requestLogin,
+} from '../auth.actions';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 describe('auth action creators', () => {
-
     describe('when login request is called', () => {
         const expectedAction = {
             type: LOGIN_REQUEST,
@@ -23,7 +30,7 @@ describe('auth action creators', () => {
     });
 
     describe('when "user logged" action is called', () => {
-        const user = GithubUserModel.fromOAuth0({});
+        const user = {};
         const expectedAction = {
             type: LOGIN_REQUEST_SUCCESS,
             payload: user,
@@ -47,7 +54,6 @@ describe('auth action creators', () => {
     });
 
     describe('when login request action is called', () => {
-
         let store;
         let serviceMock;
 
@@ -59,7 +65,9 @@ describe('auth action creators', () => {
             const fakeError = new Error('Error');
 
             beforeEach(() => {
-                serviceMock = jest.spyOn(AuthService, 'signIn').mockImplementation(() => Promise.reject(fakeError));
+                serviceMock = jest
+                    .spyOn(AuthService, 'signIn')
+                    .mockImplementation(() => Promise.reject(fakeError));
                 store.dispatch(requestLogin());
             });
 
@@ -76,6 +84,5 @@ describe('auth action creators', () => {
                 expect(store.getActions()[1].payload).toBe(fakeError);
             });
         });
-
     });
 });

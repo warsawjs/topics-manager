@@ -5,7 +5,7 @@ import TopicModel from '../shared/models/TopicModel';
 import { becomeMember, leaveTopic } from '../actions/member.actions';
 import 'react-awesome-popover/dest/react-awesome-popover.css';
 import JoinWorkshopContainer from './components/JoinWorkshopContainer';
-import { UserModel } from '../shared/models/UserModel';
+import { UserModel } from '../shared/models/user';
 
 class BecomeMemberContainer extends React.Component {
     leave = () => {

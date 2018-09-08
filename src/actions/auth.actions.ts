@@ -88,9 +88,9 @@ export const restoreSession = () => {
             const logged = await AuthService.isLogged(user);
             if (logged) {
                 dispatch(loginSuccess(user));
-            } //else if just 'not logged'
+            } // else if just 'not logged'
         } catch (err) {
-            dispatch(requestLogout()); //force clean up
+            dispatch(requestLogout()); // force clean up
         }
     };
 };

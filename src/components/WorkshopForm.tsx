@@ -1,32 +1,22 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import styled from 'styled-components';
-import Button from './Button';
-import Text from './Text';
-import Colors from '../styles/Colors';
-import Section from './Section';
+import { GithubUser } from '../shared/models/github-user';
 
 import TopicModel from '../shared/models/TopicModel';
-import { GithubUserModel } from '../shared/models/GithubUserModel';
 import { withAuthPopover } from '../shared/withAuthPopover';
+import Colors from '../styles/Colors';
+import Button from './Button';
+import Section from './Section';
+import Text from './Text';
 
 class WorkshopForm extends React.Component {
-    state = {
+    public state = {
         title: '',
         description: '',
     };
 
-    _onChange = (key, event) => {
-        this.setState({
-            [key]: event.target.value,
-        });
-    };
-
-    enableTooltipForAnonymous = (anonymous, component) => {
-        return anonymous ? withAuthPopover(component) : component;
-    };
-
-    render() {
+    public render() {
         const { onClick, author, logged } = this.props;
         const { title, description } = this.state;
 
@@ -39,13 +29,13 @@ class WorkshopForm extends React.Component {
                     <Textarea
                         placeholder="Temat"
                         value={title}
-                        onChange={e => this._onChange('title', e)}
+                        onChange={e => this.onChange('title', e)}
                     />
                     <Textarea
                         placeholder="Opis"
                         value={description}
                         height="200px"
-                        onChange={e => this._onChange('description', e)}
+                        onChange={e => this.onChange('description', e)}
                     />
                 </Centered>
                 <RightAligned>
@@ -60,17 +50,27 @@ class WorkshopForm extends React.Component {
                                         title,
                                         description,
                                     }),
-                                    author
+                                    author,
                                 );
                             }}
                         >
                             Wyślij
-                        </Button>
+                        </Button>,
                     )}
                 </RightAligned>
             </Section>
         );
-    }
+    };
+
+    private onChange = (key, event) => {
+        this.setState({
+            [key]: event.target.value,
+        });
+    };
+
+    private enableTooltipForAnonymous = (anonymous, component) => {
+        return anonymous ? withAuthPopover(component) : component;
+    };
 }
 
 const Textarea = styled.textarea`
@@ -95,7 +95,7 @@ const RightAligned = styled.div`
 
 WorkshopForm.propTypes = {
     onClick: PropTypes.func.isRequired,
-    author: PropTypes.instanceOf(GithubUserModel).isRequired,
+    author: PropTypes.instanceOf(GithubUser).isRequired,
     logged: PropTypes.bool.isRequired,
 };
 

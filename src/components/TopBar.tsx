@@ -1,29 +1,44 @@
 import React from 'react';
-import Button from './Button';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import Text from './Text';
-import Colors from '../styles/Colors';
-import PropTypes from 'prop-types';
-import { requestLogin, requestLogout } from '../actions/auth.actions';
+import { requestLogin as loginAction, requestLogout as logoutAction } from '../actions/auth.actions';
 import ActivityIndicator from '../shared/components/ActivityIndicator';
+import { BackgroundImage } from '../shared/components/BackgroundImage';
+import { User } from '../shared/models/user';
+import Colors from '../styles/Colors';
+import Button, { ButtonType } from './Button';
 import Section from './Section';
+import Text, { TextType } from './Text';
 
-//TODO make some AppError model and HelloGHError model (extends AppError)
-class TopBar extends React.Component {
-    onClick = () => {
+export interface TopBarProps {
+    logged: boolean,
+    pending: boolean,
+    error?: any,
+    user: User,
+    requestLogin: () => undefined,
+    requestLogout: () => undefined,
+}
+
+const ButtonPosition = styled.div`
+    margin-left: 15px
+`;
+
+class TopBar extends React.Component<TopBarProps> {
+    public onClick = () => {
         const { logged, requestLogout, requestLogin } = this.props;
         const onPressAction = logged ? requestLogout : requestLogin;
         onPressAction();
     };
 
-    render() {
+    public render() {
         const { logged, pending, user, error } = this.props;
         const buttonText = logged ? 'Wyloguj' : 'Zaloguj';
         return (
-            <Section background={Colors.black}>
+            <Section backgroundColor={Colors.black}>
                 <SpaceBetweenContainer>
-                    <Text type="logo" margin="0 20px 0 0" display="inline">
+                    <BackgroundImage url={'http://'}/>
+                    <Text kind={TextType.Default}/>
+                    <Text kind={TextType.Logo} style={{margin: "0 20px 0 0"}}>
                         Warsaw<strong>JS</strong>
                     </Text>
                     <MenuList>
@@ -36,18 +51,19 @@ class TopBar extends React.Component {
                         <MenuLink>Kontakt</MenuLink>
                         <MenuLink>Blog</MenuLink>
                     </MenuList>
-                    <Text type="basic" color={Colors.white} display="inline">
+                    <Text kind={TextType.Basic} color={Colors.white}>
                         {logged && user && user.email}
                     </Text>
-                    {pending && <ActivityIndicator />}
+                    {pending && <ActivityIndicator/>}
                     {error && <p>Błąd: {JSON.stringify(error)}</p>}
-                    <Button
-                        marginLeft="10px"
-                        onClick={this.onClick}
-                        type="primary"
-                    >
-                        {buttonText}
-                    </Button>
+
+                    <ButtonPosition>
+                        <Button
+                            onClick={this.onClick}
+                            kind={ButtonType.Primary}>
+                            {buttonText}
+                        </Button>
+                    </ButtonPosition>
                 </SpaceBetweenContainer>
             </Section>
         );
@@ -78,15 +94,6 @@ const MenuList = styled.ul`
     margin: 0 10px;
 `;
 
-TopBar.propTypes = {
-    logged: PropTypes.bool,
-    pending: PropTypes.bool,
-    error: PropTypes.any,
-    user: PropTypes.any,
-    requestLogin: PropTypes.func,
-    requestLogout: PropTypes.func,
-};
-
 const mapStateToProps = state => ({
     logged: state.auth.logged,
     pending: state.auth.pending,
@@ -95,11 +102,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    requestLogin: () => dispatch(requestLogin()),
-    requestLogout: () => dispatch(requestLogout()),
+    requestLogin: () => dispatch(loginAction()),
+    requestLogout: () => dispatch(logoutAction()),
 });
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
 )(TopBar);

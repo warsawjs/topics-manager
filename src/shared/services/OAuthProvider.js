@@ -1,5 +1,5 @@
 import auth0 from 'auth0-js';
-import { GithubUserModel } from '../models/GithubUserModel';
+import { GithubUser } from '../models/github-user';
 
 export default class OAuthProvider {
     static auth0 = new auth0.WebAuth({
@@ -21,7 +21,7 @@ export default class OAuthProvider {
                     authResult.accessToken &&
                     authResult.idToken
                 ) {
-                    const user = GithubUserModel.fromOAuth0(
+                    const user = GithubUser.fromOAuth0(
                         authResult.idTokenPayload
                     );
                     this.setSession(authResult, user);
@@ -50,7 +50,7 @@ export default class OAuthProvider {
     }
 
     static getCurrentUser() {
-        return GithubUserModel.fromOAuth0(
+        return GithubUser.fromOAuth0(
             JSON.parse(localStorage.getItem('user'))
         );
     }

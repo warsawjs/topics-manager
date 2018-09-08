@@ -1,4 +1,4 @@
-import { UserModel } from './UserModel';
+import { UserModel } from './user';
 import { find } from 'lodash';
 
 export default class TopicModel {
@@ -7,7 +7,7 @@ export default class TopicModel {
     likes;
     trainers;
     members;
-    author; //GithubUserModel
+    author; //GithubUser
     id;
 
     static fromBackendData(backendData) {

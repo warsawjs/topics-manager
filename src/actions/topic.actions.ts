@@ -2,7 +2,7 @@ import {
     TOPICS_GET_REQUEST_SUCCESS,
     TOPICS_GET_REQUEST,
     TOPICS_SUBMIT_REQUEST,
-} from '../actions/action_types';
+} from './action_types';
 import {
     TOPICS_GET_REQUEST_ERROR,
     TOPICS_SUBMIT_REQUEST_SUCCESS,
@@ -34,7 +34,7 @@ export const topicSubmitted = () => ({
 });
 
 export const submitTopic = (topic, author) => {
-    return function(dispatch) {
+    return dispatch => {
         dispatch({
             type: TOPICS_SUBMIT_REQUEST,
             payload: {

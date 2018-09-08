@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { submitTopic } from '../actions/topic.actions';
 import WorkshopForm from '../components/WorkshopForm';
-import { GithubUserModel } from '../shared/models/GithubUserModel';
+import { GithubUser } from '../shared/models/github-user';
 
 class WorkshopContainer extends React.Component {
     render() {
@@ -30,7 +30,7 @@ const mapStateToProps = state => ({
 
 WorkshopContainer.propTypes = {
     submitTopic: PropTypes.func.submitTopic,
-    author: PropTypes.instanceOf(GithubUserModel).isRequired,
+    author: PropTypes.instanceOf(GithubUser).isRequired,
     logged: PropTypes.bool.isRequired,
 };
 

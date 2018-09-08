@@ -1,5 +1,8 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import { initialState } from '../../reducers/topics.reducer';
+import TopicModel from '../../shared/models/TopicModel';
+import TopicService from '../../shared/services/TopicService';
 import {
     MEMBER_LEAVE_REQUEST,
     MEMBER_LEAVE_REQUEST_ERROR,
@@ -8,9 +11,6 @@ import {
     MEMBER_SUBMIT_REQUEST_ERROR,
     MEMBER_SUBMIT_REQUEST_SUCCESS,
 } from '../action_types';
-import TopicModel from '../../shared/models/TopicModel';
-import { initialState } from '../../reducers/topics.reducer';
-import TopicService from '../../shared/services/TopicService';
 import {
     becomeMember,
     becomeMemberError,
@@ -21,7 +21,6 @@ import {
     leaveTopicInit,
     leaveTopicSucceed,
 } from '../member.actions';
-import { GithubUserModel } from '../../shared/models/GithubUserModel';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -94,7 +93,7 @@ describe('membership action creators', () => {
     describe('when become a member action is called', () => {
         let store;
         let serviceMock;
-        const user = GithubUserModel.fromBackend({ email: 'john@doe.com' });
+        const user = { email: 'john@doe.com' };
         const topic = TopicModel.fromBackendData({ name: 'React is cool!' });
 
         beforeEach(() => {
@@ -154,7 +153,7 @@ describe('membership action creators', () => {
     describe('when leaving a topic action is called', () => {
         let store;
         let serviceMock;
-        const user = GithubUserModel.fromBackend({ email: 'john@doe.com' });
+        const user = { email: 'john@doe.com' };
         const topic = TopicModel.fromBackendData({ name: 'React is cool!' });
 
         beforeEach(() => {

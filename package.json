@@ -17,7 +17,7 @@
         "react-svg-piechart": "^2.1.1",
         "redux": "^4.0.0",
         "redux-thunk": "^2.2.0",
-        "styled-components": "^3.2.6",
+        "styled-components": "^3.4.5",
         "tslint": "^5.11.0",
         "typescript": "^3.0.3"
     },
@@ -37,6 +37,7 @@
         "@types/node": "^10.9.4",
         "@types/react": "^16.4.13",
         "@types/react-dom": "^16.0.7",
+        "@types/styled-components": "^3.0.0",
         "ajv": "^6.5.0",
         "ajv-keywords": "^3.2.0",
         "babel-core": "^6.26.3",
@@ -95,10 +96,15 @@
         }
     },
     "lint-staged": {
-        "src/**/*.js": [
+        "src/**/*.ts": [
             "prettier --write",
             "tslint --fix",
             "git add"
         ]
-    }
+    },
+    "src/**/*.tsx": [
+        "prettier --write",
+        "tslint --fix",
+        "git add"
+    ]
 }

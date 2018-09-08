@@ -2,7 +2,7 @@ import React from 'react';
 import Text from '../../components/Text';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { UserModel } from '../../shared/models/UserModel';
+import { UserModel } from '../../shared/models/user';
 import Trainer from '../../components/Trainer';
 import TopicModel from '../../shared/models/TopicModel';
 import BecomeTrainerContainer from '../BecomeTrainerContainer';

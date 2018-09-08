@@ -1,5 +1,8 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import { initialState } from '../../reducers/topics.reducer';
+import TopicModel from '../../shared/models/TopicModel';
+import TopicService from '../../shared/services/TopicService';
 import {
     TRAINER_LEAVE_REQUEST,
     TRAINER_LEAVE_REQUEST_ERROR,
@@ -8,18 +11,14 @@ import {
     TRAINER_SUBMIT_REQUEST_ERROR,
     TRAINER_SUBMIT_REQUEST_SUCCESS,
 } from '../action_types';
-import TopicModel from '../../shared/models/TopicModel';
-import { initialState } from '../../reducers/topics.reducer';
-import TopicService from '../../shared/services/TopicService';
-import { GithubUserModel } from '../../shared/models/GithubUserModel';
 import {
     becomeTrainer,
-    becomeTrainerInit,
     becomeTrainerError,
+    becomeTrainerInit,
     becomeTrainerSucceed,
     signOffTrainer,
-    signOffTrainerInit,
     signOffTrainerError,
+    signOffTrainerInit,
     signOffTrainerSucceed,
 } from '../trainer.actions';
 
@@ -94,7 +93,7 @@ describe('trainer action creators', () => {
     describe('when become a trainer action is called', () => {
         let store;
         let serviceMock;
-        const user = GithubUserModel.fromBackend({ email: 'john@doe.com' });
+        const user = { email: 'john@doe.com' };
         const topic = TopicModel.fromBackendData({ name: 'React is cool!' });
 
         beforeEach(() => {
@@ -154,7 +153,7 @@ describe('trainer action creators', () => {
     describe('when leaving a topic action is called', () => {
         let store;
         let serviceMock;
-        const user = GithubUserModel.fromBackend({ email: 'john@doe.com' });
+        const user = { email: 'john@doe.com' };
         const topic = TopicModel.fromBackendData({ name: 'React is cool!' });
 
         beforeEach(() => {

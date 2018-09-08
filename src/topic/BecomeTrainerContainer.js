@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import TopicModel from '../shared/models/TopicModel';
 import { becomeTrainer, signOffTrainer } from '../actions/trainer.actions';
 import JoinWorkshopContainer from './components/JoinWorkshopContainer';
-import { UserModel } from '../shared/models/UserModel';
+import { UserModel } from '../shared/models/user';
 
 class BecomeTrainerContainer extends React.Component {
     leave = () => {
