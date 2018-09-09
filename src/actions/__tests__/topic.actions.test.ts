@@ -1,4 +1,4 @@
-import TopicModel from '../../shared/models/TopicModel';
+import { topicMetadata } from '../../../test-utils/user-factory';
 import {
     TOPICS_GET_REQUEST,
     TOPICS_GET_REQUEST_ERROR,
@@ -22,7 +22,7 @@ describe('topics action creators', () => {
     });
 
     describe('when fetch finished action is called', () => {
-        const topics = [TopicModel.fromBackendData({})];
+        const topics = [topicMetadata()];
         const expectedAction = {
             type: TOPICS_GET_REQUEST_SUCCESS,
             payload: topics,

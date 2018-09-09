@@ -1,7 +1,12 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import {
+    topicMetadata as sampleTopic,
+    user as sampleUser,
+} from '../../../test-utils/user-factory';
 import { initialState } from '../../reducers/topics.reducer';
-import TopicModel from '../../shared/models/TopicModel';
+import { TopicMetadata } from '../../shared/models/topic-metadata';
+import { User } from '../../shared/models/user';
 import TopicService from '../../shared/services/TopicService';
 import {
     MEMBER_LEAVE_REQUEST,
@@ -93,8 +98,8 @@ describe('membership action creators', () => {
     describe('when become a member action is called', () => {
         let store;
         let serviceMock;
-        const user = { email: 'john@doe.com' };
-        const topic = TopicModel.fromBackendData({ name: 'React is cool!' });
+        const user = sampleUser();
+        const topic = sampleTopic();
 
         beforeEach(() => {
             store = mockStore({ topics: initialState });
@@ -153,8 +158,8 @@ describe('membership action creators', () => {
     describe('when leaving a topic action is called', () => {
         let store;
         let serviceMock;
-        const user = { email: 'john@doe.com' };
-        const topic = TopicModel.fromBackendData({ name: 'React is cool!' });
+        const user: User = sampleUser();
+        const topic: TopicMetadata = sampleTopic();
 
         beforeEach(() => {
             store = mockStore({ topics: initialState });

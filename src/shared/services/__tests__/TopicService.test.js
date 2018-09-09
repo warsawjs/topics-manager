@@ -1,5 +1,5 @@
 import { GithubUser } from '../../models/github-user';
-import TopicModel from '../../models/TopicModel';
+import Topic from '../../models/topic';
 import TopicService, {
     ALREADY_ATTENDING,
     ALREADY_AUTHOR,

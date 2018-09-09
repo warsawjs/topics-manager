@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TopicsList from './components/TopicsList';
 import { connect } from 'react-redux';
-import TopicModel from '../shared/models/TopicModel';
+import Topic from '../shared/models/topic';
 import Section from '../components/Section';
 
 class TopicContainer extends React.Component {

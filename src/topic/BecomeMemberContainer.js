@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import TopicModel from '../shared/models/TopicModel';
+import Topic from '../shared/models/topic';
 import { becomeMember, leaveTopic } from '../actions/member.actions';
 import 'react-awesome-popover/dest/react-awesome-popover.css';
 import JoinWorkshopContainer from './components/JoinWorkshopContainer';

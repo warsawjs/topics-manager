@@ -1,5 +1,5 @@
 import { EventEmitter } from 'fbemitter';
-import TopicModel from '../models/TopicModel';
+import Topic from '../models/topic';
 import firebase from 'firebase';
 import 'firebase/database';
 

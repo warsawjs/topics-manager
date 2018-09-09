@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import 'jest-styled-components';
 import TopicsList from '../TopicsList';
 import Topic from '../Topic';
-import TopicModel from '../../../shared/models/TopicModel';
+import Topic from '../../../shared/models/topic';
 import ActivityIndicator from '../../../shared/components/ActivityIndicator';
 
 configure({ adapter: new Adapter() });

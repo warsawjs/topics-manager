@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import TopicModel from '../shared/models/TopicModel';
+import Topic from '../shared/models/topic';
 import { becomeTrainer, signOffTrainer } from '../actions/trainer.actions';
 import JoinWorkshopContainer from './components/JoinWorkshopContainer';
 import { UserModel } from '../shared/models/user';

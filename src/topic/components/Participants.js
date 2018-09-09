@@ -5,7 +5,7 @@ import PieChart from 'react-svg-piechart';
 import Colors from '../../styles/Colors';
 import { VOTES_NEEDED } from '../../settings';
 import BecomeMemberContainer from '../BecomeMemberContainer';
-import TopicModel from '../../shared/models/TopicModel';
+import Topic from '../../shared/models/topic';
 
 const Participants = ({ likes, topic }) => {
     const missingVotes = VOTES_NEEDED - likes;

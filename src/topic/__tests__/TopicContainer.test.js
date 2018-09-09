@@ -5,7 +5,7 @@ import configureMockStore from 'redux-mock-store';
 import 'jest-styled-components';
 import TopicContainer from '../TopicContainer';
 import thunk from 'redux-thunk';
-import TopicModel from '../../shared/models/TopicModel';
+import Topic from '../../shared/models/topic';
 import TopicsList from '../components/TopicsList';
 
 const mockedActionType = 'TopicContainerAction';

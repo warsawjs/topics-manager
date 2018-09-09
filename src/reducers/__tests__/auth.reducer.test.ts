@@ -1,23 +1,25 @@
-import authReducer, { initialState } from '../auth.reducer';
+import { user } from '../../../test-utils/user-factory';
 import {
     loginError,
     loginPending,
     loginSuccess,
     logoutError,
     logoutPending,
-    logoutSuccess
+    logoutSuccess,
 } from '../../actions/auth.actions';
-import { GithubUser } from '../../shared/models/github-user';
+import authReducer, { initialState } from '../auth.reducer';
 
 describe('auth reducer', () => {
-
     it('should have initial state', () => {
         const authState = authReducer(undefined, {});
         expect(authState).toBe(initialState);
     });
 
     describe('when login action is submitted', () => {
-        const authState = authReducer({ pending: false, error: new Error('FakeError') }, loginPending());
+        const authState = authReducer(
+            { pending: false, error: new Error('FakeError') },
+            loginPending()
+        );
         it('should change state to pending if login action was submitted', () => {
             expect(authState.pending).toBe(true);
         });
@@ -41,7 +43,7 @@ describe('auth reducer', () => {
     });
 
     describe('when user logged in', () => {
-        const payload = GithubUser.fromOAuth0({});
+        const payload = user();
         const authState = authReducer({ pending: true }, loginSuccess(payload));
 
         it('should contain user data', () => {
@@ -58,13 +60,16 @@ describe('auth reducer', () => {
     });
 
     describe('when logout action is submitted', () => {
-        const payload = GithubUser.fromOAuth0({});
-        const authState = authReducer({
-            pending: false,
-            user: payload,
-            logged: true,
-            error: new Error('fake')
-        }, logoutPending(payload));
+        const payload = user();
+        const authState = authReducer(
+            {
+                pending: false,
+                user: payload,
+                logged: true,
+                error: new Error('fake'),
+            },
+            logoutPending()
+        );
 
         it('should change state to pending', () => {
             expect(authState.pending).toBe(true);
@@ -74,7 +79,7 @@ describe('auth reducer', () => {
             expect(authState.user).toBe(payload);
         });
 
-        it('should not change \'logged\' status yet', () => {
+        it("should not change 'logged' status yet", () => {
             expect(authState.logged).toBe(true);
         });
 
@@ -84,8 +89,11 @@ describe('auth reducer', () => {
     });
 
     describe('when logout was successful', () => {
-        const payload = GithubUser.fromOAuth0({});
-        const authState = authReducer({ pending: true, user: payload, logged: true }, logoutSuccess(payload));
+        const payload = user();
+        const authState = authReducer(
+            { pending: true, user: payload, logged: true },
+            logoutSuccess()
+        );
 
         it('should not be pending any longer', () => {
             expect(authState.pending).toBe(false);
@@ -101,9 +109,12 @@ describe('auth reducer', () => {
     });
 
     describe('when logout failed', () => {
-        const user = GithubUser.fromOAuth0({});
+        const payload = user();
         const error = new Error('Test Error');
-        const authState = authReducer({ pending: true, user, logged: true }, logoutError(error));
+        const authState = authReducer(
+            { pending: true, user: payload, logged: true },
+            logoutError(error)
+        );
 
         it('should not be pending any longer', () => {
             expect(authState.pending).toBe(false);
@@ -121,5 +132,4 @@ describe('auth reducer', () => {
             expect(authState.error).toBe(error);
         });
     });
-
 });

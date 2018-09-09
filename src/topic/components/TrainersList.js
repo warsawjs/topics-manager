@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { UserModel } from '../../shared/models/user';
 import Trainer from '../../components/Trainer';
-import TopicModel from '../../shared/models/TopicModel';
+import Topic from '../../shared/models/topic';
 import BecomeTrainerContainer from '../BecomeTrainerContainer';
 import Colors from '../../styles/Colors';
 

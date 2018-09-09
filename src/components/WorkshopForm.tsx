@@ -1,41 +1,60 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import { GithubUser } from '../shared/models/github-user';
-
-import TopicModel from '../shared/models/TopicModel';
+import { User } from '../shared/models/user';
 import { withAuthPopover } from '../shared/withAuthPopover';
 import Colors from '../styles/Colors';
 import Button from './Button';
 import Section from './Section';
 import Text from './Text';
 
-class WorkshopForm extends React.Component {
+export interface WorkshopFormProps {
+    author: User,
+    logged: boolean,
+    onClick: (TopicMetadata, User) => undefined
+}
+
+type Properties = WorkshopFormProps
+
+const Heading = styled(Text)`
+    margin: 0 0 20px 0;
+`;
+
+class WorkshopForm extends React.Component<Properties> {
     public state = {
         title: '',
         description: '',
     };
 
+    public onClick = () => {
+        const { onClick, author } = this.props;
+        const { title, description } = this.state;
+        onClick({
+                title,
+                description,
+            },
+            author,
+        );
+    };
+
     public render() {
-        const { onClick, author, logged } = this.props;
+        const { logged } = this.props;
         const { title, description } = this.state;
 
         return (
-            <Section background={Colors.yellow}>
+            <Section backgroundColor={Colors.yellow}>
                 <Centered>
-                    <Text type="primary" margin="0 0 20px 0">
+                    <Heading type="primary">
                         Zgłoś propozycję warsztatów
-                    </Text>
-                    <Textarea
+                    </Heading>
+                    <Input
                         placeholder="Temat"
                         value={title}
-                        onChange={e => this.onChange('title', e)}
+                        onChange={this.changeTitle}
                     />
-                    <Textarea
+                    <TopicDescriptionInput
                         placeholder="Opis"
                         value={description}
-                        height="200px"
-                        onChange={e => this.onChange('description', e)}
+                        onChange={this.changeDescription}
                     />
                 </Centered>
                 <RightAligned>
@@ -44,15 +63,7 @@ class WorkshopForm extends React.Component {
                         <Button
                             type="primary"
                             disabled={!logged}
-                            onClick={() => {
-                                onClick(
-                                    TopicModel.fromBackendData({
-                                        title,
-                                        description,
-                                    }),
-                                    author,
-                                );
-                            }}
+                            onClick={this.onClick}
                         >
                             Wyślij
                         </Button>,
@@ -60,6 +71,14 @@ class WorkshopForm extends React.Component {
                 </RightAligned>
             </Section>
         );
+    };
+
+    private changeTitle = (e) => {
+        this.onChange('title', e);
+    };
+
+    private changeDescription = (e) => {
+        this.onChange('description', e);
     };
 
     private onChange = (key, event) => {
@@ -73,15 +92,18 @@ class WorkshopForm extends React.Component {
     };
 }
 
-const Textarea = styled.textarea`
+const Input = styled.textarea`
     display: block;
     width: 100%;
     max-width: 780px;
     resize: none;
-    height: ${props => props.height};
     margin: 40px auto;
     border-radius: 3px;
     border: none;
+`
+
+const TopicDescriptionInput = Input.extend`
+    height: 200px;
 `;
 const Centered = styled.div`
     text-align: center;
@@ -92,11 +114,5 @@ const RightAligned = styled.div`
     margin: auto;
     text-align: right;
 `;
-
-WorkshopForm.propTypes = {
-    onClick: PropTypes.func.isRequired,
-    author: PropTypes.instanceOf(GithubUser).isRequired,
-    logged: PropTypes.bool.isRequired,
-};
 
 export default WorkshopForm;

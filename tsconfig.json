@@ -1,5 +1,5 @@
 {
-    "exclude": ["node_modules", "coverage"],
+    "exclude": ["node_modules", "coverage", "./src/registerServiceWorker.js"],
     "compilerOptions": {
         "baseUrl": ".",
         "outDir": "build/dist",
@@ -19,6 +19,7 @@
         "noImplicitThis": true,
         "suppressImplicitAnyIndexErrors": true,
         "noUnusedLocals": true,
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "checkJs": false
     }
 }
