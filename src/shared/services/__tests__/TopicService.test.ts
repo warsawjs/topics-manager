@@ -1,5 +1,8 @@
-import { GithubUser } from '../../models/github-user';
-import Topic from '../../models/topic';
+import {
+    topic as topicFactory,
+    topicMetadata,
+    user,
+} from '../../../../test-utils/user-factory';
 import TopicService, {
     ALREADY_ATTENDING,
     ALREADY_AUTHOR,
@@ -11,19 +14,17 @@ const emailTwo = 'john2@doe.com';
 
 describe('TopicService', () => {
     describe('when trying to attend the topic', () => {
-        let author, member, topic;
+        let author;
+        let member;
+        let topic;
 
         beforeEach(() => {
-            author = GithubUser.fromBackend({
-                email: emailOne,
-            });
+            author = user({ email: emailOne });
         });
 
         describe('when user is an author at the same time', () => {
             beforeEach(() => {
-                topic = TopicModel.fromBackendData({
-                    author,
-                });
+                topic = topicMetadata({ author });
             });
 
             it('should reject the request', async () => {
@@ -35,10 +36,10 @@ describe('TopicService', () => {
 
         describe('when user is a trainer at the same time', () => {
             beforeEach(() => {
-                member = GithubUser.fromBackend({
+                member = user({
                     email: emailTwo,
                 });
-                topic = TopicModel.fromBackendData({
+                topic = topicFactory({
                     author,
                     trainers: [member],
                 });
@@ -53,10 +54,10 @@ describe('TopicService', () => {
 
         describe('when user is already a member', () => {
             beforeEach(() => {
-                member = GithubUser.fromBackend({
+                member = user({
                     email: emailTwo,
                 });
-                topic = TopicModel.fromBackendData({
+                topic = topicFactory({
                     author,
                     trainers: [],
                     members: [member],

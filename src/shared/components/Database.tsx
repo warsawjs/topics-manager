@@ -1,28 +1,27 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { topicFetchInit, topicsFetched } from '../../actions/topic.actions';
-import FirebaseService from '../services/FirebaseService';
+import FirebaseService, { CallbackFunction } from '../services/firebase.service';
 
-class Database extends React.Component {
-    componentDidMount() {
+export interface DatabaseProps {
+    topicsFetched: CallbackFunction,
+    fetchTopicsInit: () => undefined,
+}
+
+class Database extends React.Component<DatabaseProps> {
+    public componentDidMount() {
         this.props.fetchTopicsInit();
         FirebaseService.listenOnTopicAdded(this.props.topicsFetched);
     }
 
-    componentWillUnmount() {
+    public componentWillUnmount() {
         FirebaseService.removeAllListeners();
     }
 
-    render() {
-        return <div />;
+    public render() {
+        return <div/>;
     }
 }
-
-Database.propTypes = {
-    topicsFetched: PropTypes.func.isRequired,
-    fetchTopicsInit: PropTypes.func.isRequired,
-};
 
 const mapDispatchToProps = dispatch => ({
     topicsFetched: topics => dispatch(topicsFetched(topics)),
@@ -31,5 +30,5 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(
     null,
-    mapDispatchToProps
+    mapDispatchToProps,
 )(Database);

@@ -1,4 +1,4 @@
-import { db } from './FirebaseService';
+import { db } from './firebase.service';
 import { reject as filterOut, find } from 'lodash-es';
 
 //TODO move to i18n if ever supported
