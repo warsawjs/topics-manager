@@ -7,7 +7,7 @@ import TopicService, {
     ALREADY_ATTENDING,
     ALREADY_AUTHOR,
     ALREADY_TRAINER,
-} from '../TopicService';
+} from '../topic-service';
 
 const emailOne = 'john1@doe.com';
 const emailTwo = 'john2@doe.com';

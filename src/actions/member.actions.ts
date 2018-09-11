@@ -1,4 +1,4 @@
-import TopicService from '../shared/services/TopicService';
+import TopicService from '../shared/services/topic-service';
 import {
     MEMBER_LEAVE_REQUEST,
     MEMBER_LEAVE_REQUEST_ERROR,

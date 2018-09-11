@@ -1,7 +1,7 @@
+import { find, reject as filterOut } from 'lodash-es';
 import { db } from './firebase.service';
-import { reject as filterOut, find } from 'lodash-es';
 
-//TODO move to i18n if ever supported
+// TODO move to i18n if ever supported
 export const ALREADY_ATTENDING = 'You are already attending this topic!';
 export const ALREADY_TRAINER =
     'You cannot be a trainer and a member at the same time!';
@@ -14,7 +14,7 @@ export default class TopicService {
             .ref()
             .child('topics')
             .push().key;
-        //temp; uncomment to push something to realtime database
+        // temp; uncomment to push something to realtime database
         db.ref('topics/' + newTopicKey).set({
             ...topic,
             author: author.strip(),
@@ -24,7 +24,7 @@ export default class TopicService {
         });
     }
 
-    //kept it in async as it should be a part of `attend` - see comments within it
+    // kept it in async as it should be a part of `attend` - see comments within it
     static async throwIfCannotAttend(topic, member) {
         const { trainers, members, author } = topic;
         const foundAsMember = find(members, { email: member.email });
@@ -49,7 +49,7 @@ export default class TopicService {
                 err => {
                     if (err) return reject(err);
                     resolve();
-                }
+                },
             );
         });
     }
@@ -67,7 +67,7 @@ export default class TopicService {
                 err => {
                     if (err) return reject(err);
                     resolve();
-                }
+                },
             );
         });
     }
@@ -82,10 +82,11 @@ export default class TopicService {
                 err => {
                     if (err) return reject(err);
                     resolve();
-                }
+                },
             );
         });
     }
+
     static async signOffTrainer(topic, trainer) {
         return new Promise((resolve, reject) => {
             db.ref(`topics/${topic.id}`).set(
@@ -98,7 +99,7 @@ export default class TopicService {
                 err => {
                     if (err) return reject(err);
                     resolve();
-                }
+                },
             );
         });
     }

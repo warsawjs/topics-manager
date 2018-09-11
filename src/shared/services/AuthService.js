@@ -1,4 +1,4 @@
-import OAuthProvider from './OAuthProvider';
+import OauthProvider from './oauth-provider';
 
 export class AuthService {
     static signIn() {

@@ -7,7 +7,7 @@ import {
     TOPICS_GET_REQUEST_ERROR,
     TOPICS_SUBMIT_REQUEST_SUCCESS,
 } from './action_types';
-import TopicService from '../shared/services/TopicService';
+import TopicService from '../shared/services/topic-service';
 
 export const topicFetchInit = () => {
     return {

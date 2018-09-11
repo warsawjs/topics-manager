@@ -5,7 +5,7 @@ import {
     user as sampleUser,
 } from '../../../test-utils/user-factory';
 import { initialState } from '../../reducers/topics.reducer';
-import TopicService from '../../shared/services/TopicService';
+import TopicService from '../../shared/services/topic-service';
 import {
     TRAINER_LEAVE_REQUEST,
     TRAINER_LEAVE_REQUEST_ERROR,

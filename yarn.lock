@@ -288,6 +288,10 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@types/auth0-js@^8.11.5":
+  version "8.11.5"
+  resolved "https://registry.yarnpkg.com/@types/auth0-js/-/auth0-js-8.11.5.tgz#21fe20e74bf62caf58b5502f22b1bf80d245a691"
+
 "@types/jest@^23.3.1":
   version "23.3.1"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.1.tgz#a4319aedb071d478e6f407d1c4578ec8156829cf"

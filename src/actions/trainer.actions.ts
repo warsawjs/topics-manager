@@ -1,4 +1,4 @@
-import TopicService from '../shared/services/TopicService';
+import TopicService from '../shared/services/topic-service';
 import {
     TRAINER_LEAVE_REQUEST,
     TRAINER_LEAVE_REQUEST_ERROR,

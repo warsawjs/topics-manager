@@ -7,7 +7,7 @@ import {
 import { initialState } from '../../reducers/topics.reducer';
 import { TopicMetadata } from '../../shared/models/topic-metadata';
 import { User } from '../../shared/models/user';
-import TopicService from '../../shared/services/TopicService';
+import TopicService from '../../shared/services/topic-service';
 import {
     MEMBER_LEAVE_REQUEST,
     MEMBER_LEAVE_REQUEST_ERROR,

@@ -6,6 +6,10 @@
         "interface-name": false
     },
     "linterOptions": {
+        "include": [
+          "./src/**/*.ts",
+          "./src/**/*.tsx"
+        ],
         "exclude": [
             "./node_modules"
         ]
