@@ -1,12 +1,10 @@
-import React from 'react';
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import configureMockStore from 'redux-mock-store';
 import 'jest-styled-components';
-import TopicContainer from '../TopicContainer';
+import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import Topic from '../../shared/models/topic';
 import TopicsList from '../components/TopicsList';
+import TopicContainer from '../TopicContainer';
 
 const mockedActionType = 'TopicContainerAction';
 
@@ -29,7 +27,7 @@ describe('<TopicContainer>', () => {
         },
     };
     let wrapper;
-    let store = mockStore(initialState);
+    const store = mockStore(initialState);
 
     beforeEach(() => {
         store.clearActions();
@@ -43,7 +41,8 @@ describe('<TopicContainer>', () => {
          * Container is correctly 'connected' (i.e. has correctly mapped dispatchToProps
          *
          */
-        wrapper = shallow(<TopicContainer store={store} />).dive();
+        wrapper = shallow(<TopicContainer store = { store }
+        />).dive();;;
     });
 
     it('should match snapshot with error', () => {
@@ -56,7 +55,7 @@ describe('<TopicContainer>', () => {
 
     it('should have pending state connected correctly from redux', () => {
         expect(wrapper.instance().props.pending).toBe(
-            initialState.topic.pending
+            initialState.topic.pending,
         );
     });
 
@@ -82,7 +81,7 @@ describe('<TopicContainer>', () => {
         let store = mockStore(initialState);
 
         beforeEach(() => {
-            wrapper = shallow(<TopicContainer store={store} />).dive();
+            wrapper = shallow(<TopicContainer store = { store }/>).dive()
         });
 
         it('should match snapshot', () => {
@@ -90,12 +89,12 @@ describe('<TopicContainer>', () => {
         });
 
         it('should properly pass topics to rendered <TopicsList>', () => {
-            //is a bit too complicated and should be splitted into context-based `describes` but for this one test it would be too much
+            // is a bit too complicated and should be splitted into context-based `describes` but for this one test it would be too much
             expect(
                 wrapper
                     .find(TopicsList)
                     .at(0)
-                    .props().topics.length
+                    .props().topics.length,
             ).toBe(2);
         });
     });
