@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PieChart from 'react-svg-piechart';
-import Colors from '../../styles/Colors';
+import Colors from '../../styles/colors';
 import { VOTES_NEEDED } from '../../settings';
 import BecomeMemberContainer from '../BecomeMemberContainer';
 import Topic from '../../shared/models/topic';

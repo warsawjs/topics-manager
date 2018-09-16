@@ -1,4 +1,5 @@
-import TopicService from '../shared/services/topic-service';
+
+import { signUpAsTrainer, signOffTrainer as signOff } from '../shared/services/topic-service';
 import {
     TRAINER_LEAVE_REQUEST,
     TRAINER_LEAVE_REQUEST_ERROR,
@@ -11,7 +12,7 @@ import {
 export const becomeTrainer = (topic, user) => {
     return dispatch => {
         dispatch(becomeTrainerInit());
-        return TopicService.signUpAsTrainer(topic, user)
+        return signUpAsTrainer(topic, user)
             .then(() => {
                 dispatch(becomeTrainerSucceed());
             })
@@ -43,7 +44,7 @@ export const becomeTrainerError = error => {
 export const signOffTrainer = (topic, user) => {
     return dispatch => {
         dispatch(signOffTrainerInit());
-        return TopicService.signOffTrainer(topic, user)
+        return signOff(topic, user)
             .then(() => {
                 dispatch(signOffTrainerSucceed());
             })

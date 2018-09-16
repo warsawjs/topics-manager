@@ -1,4 +1,4 @@
-import TopicService from '../shared/services/topic-service';
+import { attend, leave } from '../shared/services/topic-service';
 import {
     MEMBER_LEAVE_REQUEST,
     MEMBER_LEAVE_REQUEST_ERROR,
@@ -11,7 +11,7 @@ import {
 export const becomeMember = (topic, user) => {
     return dispatch => {
         dispatch(becomeMemberInit());
-        return TopicService.attend(topic, user)
+        return attend(topic, user)
             .then(() => {
                 dispatch(becomeMemberSucceed());
             })
@@ -43,7 +43,7 @@ export const becomeMemberError = error => {
 export const leaveTopic = (topic, user) => {
     return dispatch => {
         dispatch(leaveTopicInit());
-        return TopicService.leave(topic, user)
+        return leave(topic, user)
             .then(() => {
                 dispatch(leaveTopicSucceed());
             })

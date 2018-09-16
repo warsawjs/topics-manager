@@ -1,6 +1,6 @@
 import React, { SFC } from 'react';
 import styled from 'styled-components';
-import Colors from '../styles/Colors';
+import Colors from '../styles/colors';
 
 export enum ButtonType {
     Primary = 'primary',

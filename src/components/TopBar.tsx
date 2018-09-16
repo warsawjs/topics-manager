@@ -5,7 +5,7 @@ import { requestLogin as loginAction, requestLogout as logoutAction } from '../a
 import ActivityIndicator from '../shared/components/ActivityIndicator';
 import { BackgroundImage } from '../shared/components/BackgroundImage';
 import { User } from '../shared/models/user';
-import Colors from '../styles/Colors';
+import Colors from '../styles/colors';
 import Button, { ButtonType } from './Button';
 import Section from './Section';
 import Text, { TextType } from './Text';

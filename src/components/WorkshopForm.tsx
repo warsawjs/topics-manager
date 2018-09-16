@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { User } from '../shared/models/user';
 import { withAuthPopover } from '../shared/withAuthPopover';
-import Colors from '../styles/Colors';
+import Colors from '../styles/colors';
 import Button from './Button';
 import Section from './Section';
 import Text from './Text';

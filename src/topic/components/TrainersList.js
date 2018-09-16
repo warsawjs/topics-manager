@@ -6,7 +6,7 @@ import { UserModel } from '../../shared/models/user';
 import Trainer from '../../components/Trainer';
 import Topic from '../../shared/models/topic';
 import BecomeTrainerContainer from '../BecomeTrainerContainer';
-import Colors from '../../styles/Colors';
+import Colors from '../../styles/colors';
 
 const TrainersList = ({ trainers, author, topic }) => (
     <StyledTrainersContainer>

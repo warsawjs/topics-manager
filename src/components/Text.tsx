@@ -1,6 +1,6 @@
 import React, { SFC } from 'react';
 import styled, { StyledFunction } from 'styled-components';
-import Colors from '../styles/Colors';
+import Colors from '../styles/colors';
 
 export enum TextType {
     Primary = 'primary',

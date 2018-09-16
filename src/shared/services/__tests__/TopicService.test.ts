@@ -3,10 +3,10 @@ import {
     topicMetadata,
     user,
 } from '../../../../test-utils/user-factory';
-import TopicService, {
+import {
     ALREADY_ATTENDING,
     ALREADY_AUTHOR,
-    ALREADY_TRAINER,
+    ALREADY_TRAINER, throwIfCannotAttend,
 } from '../topic-service';
 
 const emailOne = 'john1@doe.com';
@@ -29,7 +29,7 @@ describe('TopicService', () => {
 
             it('should reject the request', async () => {
                 await expect(
-                    TopicService.throwIfCannotAttend(topic, author)
+                    throwIfCannotAttend(topic, author)
                 ).rejects.toEqual(ALREADY_AUTHOR);
             });
         });
@@ -47,7 +47,7 @@ describe('TopicService', () => {
 
             it('should reject the request', async () => {
                 await expect(
-                    TopicService.throwIfCannotAttend(topic, member)
+                    throwIfCannotAttend(topic, member)
                 ).rejects.toEqual(ALREADY_TRAINER);
             });
         });
@@ -66,7 +66,7 @@ describe('TopicService', () => {
 
             it('should reject the request', async () => {
                 await expect(
-                    TopicService.throwIfCannotAttend(topic, member)
+                    throwIfCannotAttend(topic, member)
                 ).rejects.toEqual(ALREADY_ATTENDING);
             });
         });

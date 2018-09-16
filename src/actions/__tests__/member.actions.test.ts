@@ -1,13 +1,9 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import {
-    topicMetadata as sampleTopic,
-    user as sampleUser,
-} from '../../../test-utils/user-factory';
+import { topicMetadata as sampleTopic, user as sampleUser } from '../../../test-utils/user-factory';
 import { initialState } from '../../reducers/topics.reducer';
 import { TopicMetadata } from '../../shared/models/topic-metadata';
 import { User } from '../../shared/models/user';
-import TopicService from '../../shared/services/topic-service';
 import {
     MEMBER_LEAVE_REQUEST,
     MEMBER_LEAVE_REQUEST_ERROR,
@@ -97,7 +93,6 @@ describe('membership action creators', () => {
 
     describe('when become a member action is called', () => {
         let store;
-        let serviceMock;
         const user = sampleUser();
         const topic = sampleTopic();
 
@@ -109,14 +104,14 @@ describe('membership action creators', () => {
             const fakeError = new Error('Error');
 
             beforeEach(() => {
-                serviceMock = jest
-                    .spyOn(TopicService, 'attend')
-                    .mockImplementation(() => Promise.reject(fakeError));
+                jest.mock('./topic-service', () => ({
+                    attend: () => Promise.reject(fakeError),
+                }));
                 store.dispatch(becomeMember(topic, user));
             });
 
             afterEach(() => {
-                serviceMock.mockRestore();
+                jest.unmock('./topic-service')
             });
 
             it('should dispatch MEMBER_SUBMIT_REQUEST', () => {
@@ -125,7 +120,7 @@ describe('membership action creators', () => {
 
             it('should create MEMBER_SUBMIT_REQUEST_ERROR action', () => {
                 expect(store.getActions()[1].type).toBe(
-                    MEMBER_SUBMIT_REQUEST_ERROR
+                    MEMBER_SUBMIT_REQUEST_ERROR,
                 );
                 expect(store.getActions()[1].payload).toBe(fakeError);
             });
@@ -133,14 +128,14 @@ describe('membership action creators', () => {
 
         describe('when ApiService return confirmation', () => {
             beforeEach(() => {
-                serviceMock = jest
-                    .spyOn(TopicService, 'attend')
-                    .mockImplementation(() => Promise.resolve());
+                jest.mock('./topic-service', () => ({
+                    attend: () => Promise.resolve(),
+                }));
                 store.dispatch(becomeMember(topic, user));
             });
 
             afterEach(() => {
-                serviceMock.mockRestore();
+                jest.unmock('./topic-service')
             });
 
             it('should dispatch MEMBER_SUBMIT_REQUEST', () => {
@@ -149,7 +144,7 @@ describe('membership action creators', () => {
 
             it('should create MEMBER_SUBMIT_REQUEST_SUCCESS action', () => {
                 expect(store.getActions()[1].type).toBe(
-                    MEMBER_SUBMIT_REQUEST_SUCCESS
+                    MEMBER_SUBMIT_REQUEST_SUCCESS,
                 );
             });
         });
@@ -157,7 +152,6 @@ describe('membership action creators', () => {
 
     describe('when leaving a topic action is called', () => {
         let store;
-        let serviceMock;
         const user: User = sampleUser();
         const topic: TopicMetadata = sampleTopic();
 
@@ -169,14 +163,14 @@ describe('membership action creators', () => {
             const fakeError = new Error('Error');
 
             beforeEach(() => {
-                serviceMock = jest
-                    .spyOn(TopicService, 'leave')
-                    .mockImplementation(() => Promise.reject(fakeError));
+                jest.mock('./topic-service', () => ({
+                    leave: () => Promise.reject(fakeError),
+                }));
                 store.dispatch(leaveTopic(topic, user));
             });
 
             afterEach(() => {
-                serviceMock.mockRestore();
+                jest.unmock('./topic-service')
             });
 
             it('should dispatch MEMBER_SUBMIT_REQUEST', () => {
@@ -185,7 +179,7 @@ describe('membership action creators', () => {
 
             it('should create MEMBER_LEAVE_REQUEST_ERROR action', () => {
                 expect(store.getActions()[1].type).toBe(
-                    MEMBER_LEAVE_REQUEST_ERROR
+                    MEMBER_LEAVE_REQUEST_ERROR,
                 );
                 expect(store.getActions()[1].payload).toBe(fakeError);
             });
@@ -193,14 +187,14 @@ describe('membership action creators', () => {
 
         describe('when ApiService return confirmation', () => {
             beforeEach(() => {
-                serviceMock = jest
-                    .spyOn(TopicService, 'leave')
-                    .mockImplementation(() => Promise.resolve());
+                jest.mock('./topic-service', () => ({
+                    leave: () => Promise.resolve(),
+                }));
                 store.dispatch(leaveTopic(topic, user));
             });
 
             afterEach(() => {
-                serviceMock.mockRestore();
+                jest.unmock('./topic-service')
             });
 
             it('should dispatch MEMBER_LEAVE_REQUEST', () => {
@@ -209,7 +203,7 @@ describe('membership action creators', () => {
 
             it('should create MEMBER_LEAVE_REQUEST_SUCCESS action', () => {
                 expect(store.getActions()[1].type).toBe(
-                    MEMBER_LEAVE_REQUEST_SUCCESS
+                    MEMBER_LEAVE_REQUEST_SUCCESS,
                 );
             });
         });

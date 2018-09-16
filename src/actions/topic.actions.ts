@@ -7,7 +7,6 @@ import {
     TOPICS_GET_REQUEST_ERROR,
     TOPICS_SUBMIT_REQUEST_SUCCESS,
 } from './action_types';
-import TopicService from '../shared/services/topic-service';
 
 export const topicFetchInit = () => {
     return {
@@ -42,7 +41,7 @@ export const submitTopic = (topic, author) => {
                 author,
             },
         });
-        TopicService.submitTopic(topic, author);
+        submitTopic(topic, author);
         dispatch(topicSubmitted());
     };
 };

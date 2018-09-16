@@ -1,11 +1,7 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import {
-    topicMetadata as sampleTopic,
-    user as sampleUser,
-} from '../../../test-utils/user-factory';
+import { topicMetadata as sampleTopic, user as sampleUser } from '../../../test-utils/user-factory';
 import { initialState } from '../../reducers/topics.reducer';
-import TopicService from '../../shared/services/topic-service';
 import {
     TRAINER_LEAVE_REQUEST,
     TRAINER_LEAVE_REQUEST_ERROR,
@@ -95,7 +91,6 @@ describe('trainer action creators', () => {
 
     describe('when become a trainer action is called', () => {
         let store;
-        let serviceMock;
         const user = sampleUser();
         const topic = sampleTopic();
 
@@ -107,14 +102,14 @@ describe('trainer action creators', () => {
             const fakeError = new Error('Error');
 
             beforeEach(() => {
-                serviceMock = jest
-                    .spyOn(TopicService, 'signUpAsTrainer')
-                    .mockImplementation(() => Promise.reject(fakeError));
+                jest.mock('./topic-service', () => ({
+                    signUpAsTrainer: () => Promise.reject(fakeError),
+                }));
                 store.dispatch(becomeTrainer(topic, user));
             });
 
             afterEach(() => {
-                serviceMock.mockRestore();
+                jest.unmock('./topic-service');
             });
 
             it('should dispatch TRAINER_SUBMIT_REQUEST', () => {
@@ -123,7 +118,7 @@ describe('trainer action creators', () => {
 
             it('should create TRAINER_SUBMIT_REQUEST_ERROR action', () => {
                 expect(store.getActions()[1].type).toBe(
-                    TRAINER_SUBMIT_REQUEST_ERROR
+                    TRAINER_SUBMIT_REQUEST_ERROR,
                 );
                 expect(store.getActions()[1].payload).toBe(fakeError);
             });
@@ -131,14 +126,14 @@ describe('trainer action creators', () => {
 
         describe('when ApiService return confirmation', () => {
             beforeEach(() => {
-                serviceMock = jest
-                    .spyOn(TopicService, 'signUpAsTrainer')
-                    .mockImplementation(() => Promise.resolve());
+                jest.mock('./topic-service', () => ({
+                    signUpAsTrainer: () => Promise.resolve(),
+                }));
                 store.dispatch(becomeTrainer(topic, user));
             });
 
             afterEach(() => {
-                serviceMock.mockRestore();
+                jest.unmock('./topic-service');
             });
 
             it('should dispatch MEMBER_SUBMIT_REQUEST', () => {
@@ -147,7 +142,7 @@ describe('trainer action creators', () => {
 
             it('should create TRAINER_SUBMIT_REQUEST_SUCCESS action', () => {
                 expect(store.getActions()[1].type).toBe(
-                    TRAINER_SUBMIT_REQUEST_SUCCESS
+                    TRAINER_SUBMIT_REQUEST_SUCCESS,
                 );
             });
         });
@@ -155,7 +150,6 @@ describe('trainer action creators', () => {
 
     describe('when leaving a topic action is called', () => {
         let store;
-        let serviceMock;
         const user = sampleUser();
         const topic = sampleTopic();
 
@@ -167,14 +161,14 @@ describe('trainer action creators', () => {
             const fakeError = new Error('Error');
 
             beforeEach(() => {
-                serviceMock = jest
-                    .spyOn(TopicService, 'signOffTrainer')
-                    .mockImplementation(() => Promise.reject(fakeError));
+                jest.mock('./topic-service', () => ({
+                    signOffTrainer: () => Promise.reject(fakeError),
+                }));
                 store.dispatch(signOffTrainer(topic, user));
             });
 
             afterEach(() => {
-                serviceMock.mockRestore();
+                jest.unmock('./topic-service');
             });
 
             it('should dispatch TRAINER_SUBMIT_REQUEST', () => {
@@ -183,7 +177,7 @@ describe('trainer action creators', () => {
 
             it('should create TRAINER_LEAVE_REQUEST_ERROR action', () => {
                 expect(store.getActions()[1].type).toBe(
-                    TRAINER_LEAVE_REQUEST_ERROR
+                    TRAINER_LEAVE_REQUEST_ERROR,
                 );
                 expect(store.getActions()[1].payload).toBe(fakeError);
             });
@@ -191,14 +185,14 @@ describe('trainer action creators', () => {
 
         describe('when ApiService returns confirmation', () => {
             beforeEach(() => {
-                serviceMock = jest
-                    .spyOn(TopicService, 'signOffTrainer')
-                    .mockImplementation(() => Promise.resolve());
+                jest.mock('./topic-service', () => ({
+                    signOffTrainer: () => Promise.resolve(),
+                }));
                 store.dispatch(signOffTrainer(topic, user));
             });
 
             afterEach(() => {
-                serviceMock.mockRestore();
+                jest.unmock('./topic-service');
             });
 
             it('should dispatch TRAINER_LEAVE_REQUEST', () => {
@@ -207,7 +201,7 @@ describe('trainer action creators', () => {
 
             it('should create TRAINER_LEAVE_REQUEST_SUCCESS action', () => {
                 expect(store.getActions()[1].type).toBe(
-                    TRAINER_LEAVE_REQUEST_SUCCESS
+                    TRAINER_LEAVE_REQUEST_SUCCESS,
                 );
             });
         });
