@@ -1,8 +1,10 @@
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import 'jest-styled-components';
+import * as React from 'react';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import { topic } from '../../../test-utils/user-factory';
 import TopicsList from '../components/TopicsList';
 import TopicContainer from '../TopicContainer';
 
@@ -16,18 +18,18 @@ configure({ adapter: new Adapter() });
 const mockStore = configureMockStore([thunk]);
 
 describe('<TopicContainer>', () => {
-    const initialState = {
+    let initialState = {
         auth: {
             loggedUser: false,
         },
         topic: {
             pending: true,
             error: 'test error message',
-            topics: [TopicModel.fromBackendData({})],
+            topics: [topic()],
         },
     };
     let wrapper;
-    const store = mockStore(initialState);
+    let store = mockStore(initialState);
 
     beforeEach(() => {
         store.clearActions();
@@ -41,8 +43,7 @@ describe('<TopicContainer>', () => {
          * Container is correctly 'connected' (i.e. has correctly mapped dispatchToProps
          *
          */
-        wrapper = shallow(<TopicContainer store = { store }
-        />).dive();;;
+        wrapper = shallow(<TopicContainer store={store}/>).dive();
     });
 
     it('should match snapshot with error', () => {
@@ -64,24 +65,20 @@ describe('<TopicContainer>', () => {
     });
 
     describe('when there are no errors', () => {
-        const initialState = {
+        initialState = {
             auth: {
                 loggedUser: false,
             },
             topic: {
                 pending: true,
                 error: null,
-                topics: [
-                    TopicModel.fromBackendData({}),
-                    TopicModel.fromBackendData({}),
-                ],
+                topics: [topic(), topic()],
             },
         };
-        let wrapper;
-        let store = mockStore(initialState);
+        store = mockStore(initialState);
 
         beforeEach(() => {
-            wrapper = shallow(<TopicContainer store = { store }/>).dive()
+            wrapper = shallow(<TopicContainer store={store}/>).dive();
         });
 
         it('should match snapshot', () => {

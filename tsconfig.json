@@ -1,6 +1,7 @@
 {
     "exclude": ["node_modules", "coverage", "./src/registerServiceWorker.js"],
     "compilerOptions": {
+        "strict": true,
         "baseUrl": ".",
         "outDir": "build/dist",
         "module": "esnext",
