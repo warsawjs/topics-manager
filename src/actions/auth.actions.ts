@@ -1,3 +1,6 @@
+import { Action, Dispatch } from 'redux';
+import { ThunkAction } from 'redux-thunk';
+import { User } from '../shared/models/user';
 import { AuthService } from '../shared/services/AuthService';
 import {
     LOGIN_REQUEST,
@@ -9,8 +12,10 @@ import {
     LOGOUT_REQUEST_SUCCESS,
 } from './action_types';
 
-export const requestLogin = () => {
-    return dispatch => {
+type ThunkResult<R> = ThunkAction<R, {}, undefined, Action<any>> | Action<R>;
+
+export const requestLogin = (): ThunkResult<void> => {
+    return (dispatch: Dispatch) => {
         dispatch(loginPending());
         AuthService.signIn()
             .then(result => {
@@ -28,22 +33,22 @@ export const loginPending = () => {
     };
 };
 
-export const loginError = error => {
+export const loginError = (error: any) => {
     return {
         type: LOGIN_REQUEST_ERROR,
         payload: error,
     };
 };
 
-export const loginSuccess = user => {
+export const loginSuccess = (user: User) => {
     return {
         type: LOGIN_REQUEST_SUCCESS,
         payload: user,
     };
 };
 
-export const requestLogout = () => {
-    return dispatch => {
+export const requestLogout = (): ThunkResult<void> => {
+    return (dispatch: Dispatch) => {
         dispatch(logoutPending());
         AuthService.signOut()
             .then(() => {
@@ -61,7 +66,7 @@ export const logoutPending = () => {
     };
 };
 
-export const logoutError = error => {
+export const logoutError = (error: any) => {
     return {
         type: LOGOUT_REQUEST_ERROR,
         payload: error,
@@ -80,8 +85,8 @@ export const restoringSession = () => {
     };
 };
 
-export const restoreSession = () => {
-    return async dispatch => {
+export const restoreSession = (): ThunkResult<void> => {
+    return async (dispatch: Dispatch) => {
         dispatch(restoringSession());
         try {
             const user = await AuthService.getUser();

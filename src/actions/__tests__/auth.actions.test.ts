@@ -1,4 +1,4 @@
-import configureMockStore from 'redux-mock-store';
+import configureMockStore, { MockStoreEnhanced } from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { Error } from 'tslint/lib/error';
 import { initialState } from '../../reducers/auth.reducer';
@@ -54,8 +54,8 @@ describe('auth action creators', () => {
     });
 
     describe('when login request action is called', () => {
-        let store;
-        let serviceMock;
+        let store: MockStoreEnhanced;
+        let serviceMock: jest.Mock;
 
         beforeEach(() => {
             store = mockStore({ auth: initialState });
@@ -72,7 +72,7 @@ describe('auth action creators', () => {
             });
 
             afterEach(() => {
-                serviceMock.mockRestore();
+                serviceMock.mockReset();
             });
 
             it('should dispatch LOGIN_REQUEST', () => {
