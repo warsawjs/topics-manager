@@ -1,6 +1,7 @@
 import configureMockStore, { MockStoreEnhanced } from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { Error } from 'tslint/lib/error';
+import { user } from '../../../test-utils/user-factory';
 import { initialState } from '../../reducers/auth.reducer';
 import { AuthService } from '../../shared/services/AuthService';
 import {
@@ -30,13 +31,13 @@ describe('auth action creators', () => {
     });
 
     describe('when "user logged" action is called', () => {
-        const user = {};
+        const authorizedUser = user();
         const expectedAction = {
             type: LOGIN_REQUEST_SUCCESS,
-            payload: user,
+            payload: authorizedUser,
         };
         it('should create action', () => {
-            const action = loginSuccess(user);
+            const action = loginSuccess(authorizedUser);
             expect(action).toEqual(expectedAction);
         });
     });

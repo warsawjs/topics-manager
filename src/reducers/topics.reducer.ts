@@ -1,3 +1,4 @@
+import { AnyAction } from 'redux';
 import {
     TOPICS_GET_REQUEST,
     TOPICS_GET_REQUEST_ERROR,
@@ -17,7 +18,7 @@ const initialState: State = {
     error: null,
 };
 
-const reducer = (state: Partial<State> = initialState, action) => {
+const reducer = (state: State = initialState, action: AnyAction): State => {
     switch (action.type) {
         case TOPICS_GET_REQUEST:
             return { ...state, pending: true, error: null };

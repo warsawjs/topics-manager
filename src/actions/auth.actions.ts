@@ -1,9 +1,6 @@
-import { Action, Dispatch } from 'redux';
-import { ThunkAction } from 'redux-thunk';
 import { User } from '../shared/models/user';
 import { AuthService } from '../shared/services/AuthService';
 import {
-    LOGIN_REQUEST,
     LOGIN_REQUEST_ERROR,
     LOGIN_REQUEST_SUCCESS,
     LOGIN_RESTORE_SESSION_REQUEST,
@@ -11,11 +8,26 @@ import {
     LOGOUT_REQUEST_ERROR,
     LOGOUT_REQUEST_SUCCESS,
 } from './action_types';
+import { Dispatch, ThunkResult } from './types';
 
-type ThunkResult<R> = ThunkAction<R, {}, undefined, Action<any>> | Action<R>;
+enum AuthAction {
+    LoginRequest = 'LOGIN_REQUEST',
+    LoginRequestSuccess = 'LOGIN_REQUEST_SUCCESS',
+    LoginRequestError = 'LOGIN_REQUEST_ERROR',
+}
 
-export const requestLogin = (): ThunkResult<void> => {
-    return (dispatch: Dispatch) => {
+interface ActionPending {
+    type: AuthAction.LoginRequest;
+}
+
+export const loginPending = (): ActionPending => {
+    return {
+        type: AuthAction.LoginRequest,
+    };
+};
+
+export const requestLogin = () => {
+    return (dispatch: Dispatch<any>) => {
         dispatch(loginPending());
         AuthService.signIn()
             .then(result => {
@@ -24,12 +36,6 @@ export const requestLogin = (): ThunkResult<void> => {
             .catch(error => {
                 dispatch(loginError(error));
             });
-    };
-};
-
-export const loginPending = () => {
-    return {
-        type: LOGIN_REQUEST,
     };
 };
 
@@ -47,8 +53,8 @@ export const loginSuccess = (user: User) => {
     };
 };
 
-export const requestLogout = (): ThunkResult<void> => {
-    return (dispatch: Dispatch) => {
+export const requestLogout = () => {
+    return (dispatch: Dispatch<any>) => {
         dispatch(logoutPending());
         AuthService.signOut()
             .then(() => {
@@ -85,8 +91,8 @@ export const restoringSession = () => {
     };
 };
 
-export const restoreSession = (): ThunkResult<void> => {
-    return async (dispatch: Dispatch) => {
+export const restoreSession = (): ThunkResult<void, any> => {
+    return async (dispatch: Dispatch<any>) => {
         dispatch(restoringSession());
         try {
             const user = await AuthService.getUser();

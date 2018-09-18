@@ -1,3 +1,4 @@
+import { AnyAction } from 'redux';
 import {
     LOGIN_REQUEST,
     LOGIN_REQUEST_ERROR,
@@ -22,7 +23,7 @@ const initialState: State = {
     error: null,
 };
 
-const reducer = (state: Partial<State> = initialState, action) => {
+const reducer = (state: State = initialState, action: AnyAction): State => {
     switch (action.type) {
         case LOGIN_REQUEST:
             return { ...state, pending: true, error: null };
