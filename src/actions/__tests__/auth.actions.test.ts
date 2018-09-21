@@ -1,8 +1,12 @@
-import configureMockStore, { MockStoreEnhanced } from 'redux-mock-store';
-import thunk from 'redux-thunk';
+import { AnyAction } from 'redux';
+import configureMockStore, {
+    MockStoreCreator,
+    MockStoreEnhanced,
+} from 'redux-mock-store';
+import thunk, { ThunkDispatch } from 'redux-thunk';
 import { Error } from 'tslint/lib/error';
 import { user } from '../../../test-utils/user-factory';
-import { initialState } from '../../reducers/auth.reducer';
+import { RootState } from '../../reducers';
 import { AuthService } from '../../shared/services/AuthService';
 import {
     LOGIN_REQUEST,
@@ -16,8 +20,24 @@ import {
     requestLogin,
 } from '../auth.actions';
 
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
+const initialState: RootState = {
+    auth: {
+        logged: false,
+        pending: false,
+        user: null,
+        error: null,
+    },
+    topic: {
+        pending: false,
+        topics: [],
+        error: null,
+    },
+};
+type DispatchExts = ThunkDispatch<RootState, undefined, AnyAction>;
+const mockStore: MockStoreCreator<RootState, DispatchExts> = configureMockStore<
+    RootState,
+    DispatchExts
+>([thunk]);
 
 describe('auth action creators', () => {
     describe('when login request is called', () => {
@@ -55,11 +75,11 @@ describe('auth action creators', () => {
     });
 
     describe('when login request action is called', () => {
-        let store: MockStoreEnhanced;
+        let store: MockStoreEnhanced<RootState, DispatchExts>;
         let serviceMock: jest.Mock;
 
         beforeEach(() => {
-            store = mockStore({ auth: initialState });
+            store = mockStore(initialState);
         });
 
         describe('when AuthService returns an error', () => {
@@ -69,7 +89,7 @@ describe('auth action creators', () => {
                 serviceMock = jest
                     .spyOn(AuthService, 'signIn')
                     .mockImplementation(() => Promise.reject(fakeError));
-                store.dispatch(requestLogin());
+                return store.dispatch(requestLogin());
             });
 
             afterEach(() => {

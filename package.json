@@ -16,7 +16,7 @@
         "react-scripts-ts": "^2.17.0",
         "react-svg-piechart": "^2.1.1",
         "redux": "^4.0.0",
-        "redux-thunk": "^2.2.0",
+        "redux-thunk": "^2.3.0",
         "styled-components": "^3.4.5",
         "tslint": "^5.11.0",
         "typescript": "^3.0.3"
@@ -42,7 +42,6 @@
         "@types/react-dom": "^16.0.7",
         "@types/react-redux": "^6.0.9",
         "@types/redux-mock-store": "^1.0.0",
-        "@types/redux-thunk": "^2.1.0",
         "@types/styled-components": "^3.0.0",
         "ajv": "^6.5.0",
         "ajv-keywords": "^3.2.0",

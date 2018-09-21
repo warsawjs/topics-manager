@@ -1,3 +1,4 @@
+import { AnyAction } from 'redux';
 import { User } from '../shared/models/user';
 import { AuthService } from '../shared/services/AuthService';
 import {
@@ -10,43 +11,45 @@ import {
 } from './action_types';
 import { Dispatch, ThunkResult } from './types';
 
-enum AuthAction {
+enum AuthActionId {
     LoginRequest = 'LOGIN_REQUEST',
     LoginRequestSuccess = 'LOGIN_REQUEST_SUCCESS',
     LoginRequestError = 'LOGIN_REQUEST_ERROR',
 }
 
-interface ActionPending {
-    type: AuthAction.LoginRequest;
+interface AuthAction extends AnyAction {
+    type:
+        | AuthActionId.LoginRequest
+        | AuthActionId.LoginRequestError
+        | AuthActionId.LoginRequestSuccess;
 }
 
-export const loginPending = (): ActionPending => {
-    return {
-        type: AuthAction.LoginRequest,
-    };
-};
+export const loginPending = (): AuthAction => ({
+    type: AuthActionId.LoginRequest,
+});
 
 export const requestLogin = () => {
-    return (dispatch: Dispatch<any>) => {
-        dispatch(loginPending());
-        AuthService.signIn()
+    return (next: Dispatch<AuthAction>) => {
+        next(loginPending());
+        next(logoutError(''));
+        return AuthService.signIn()
             .then(result => {
-                dispatch(loginSuccess(result));
+                next(loginSuccess(result));
             })
             .catch(error => {
-                dispatch(loginError(error));
+                next(loginError(error));
             });
     };
 };
 
-export const loginError = (error: any) => {
+export const loginError = (error: any): AnyAction => {
     return {
         type: LOGIN_REQUEST_ERROR,
         payload: error,
     };
 };
 
-export const loginSuccess = (user: User) => {
+export const loginSuccess = (user: User): AnyAction => {
     return {
         type: LOGIN_REQUEST_SUCCESS,
         payload: user,
@@ -85,14 +88,14 @@ export const logoutSuccess = () => {
     };
 };
 
-export const restoringSession = () => {
+export const restoringSession = (): AnyAction => {
     return {
         type: LOGIN_RESTORE_SESSION_REQUEST,
     };
 };
 
-export const restoreSession = (): ThunkResult<void, any> => {
-    return async (dispatch: Dispatch<any>) => {
+export const restoreSession = (): ThunkResult<void> => {
+    return async dispatch => {
         dispatch(restoringSession());
         try {
             const user = await AuthService.getUser();
@@ -103,5 +106,6 @@ export const restoreSession = (): ThunkResult<void, any> => {
         } catch (err) {
             dispatch(requestLogout()); // force clean up
         }
+        // return dispatch(action)
     };
 };

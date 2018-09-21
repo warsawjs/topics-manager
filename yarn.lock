@@ -354,12 +354,6 @@
   dependencies:
     redux "^4.0.0"
 
-"@types/redux-thunk@^2.1.0":
-  version "2.1.0"
-  resolved "http://registry.npmjs.org/@types/redux-thunk/-/redux-thunk-2.1.0.tgz#bc2b6e972961831afb82a9bf4f06726e351f9416"
-  dependencies:
-    redux-thunk "*"
-
 "@types/styled-components@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/styled-components/-/styled-components-3.0.0.tgz#d371e762802e199ecd7bb8ab8298696475ce19dc"
@@ -8632,7 +8626,7 @@ redux-mock-store@^1.5.1:
   dependencies:
     lodash.isplainobject "^4.0.6"
 
-redux-thunk@*, redux-thunk@^2.2.0:
+redux-thunk@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
 

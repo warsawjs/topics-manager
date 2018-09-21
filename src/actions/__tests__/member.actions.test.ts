@@ -1,6 +1,9 @@
-import configureMockStore from 'redux-mock-store';
+import configureMockStore, { MockStoreEnhanced } from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { topicMetadata as sampleTopic, user as sampleUser } from '../../../test-utils/user-factory';
+import {
+    topicMetadata as sampleTopic,
+    user as sampleUser,
+} from '../../../test-utils/user-factory';
 import { initialState } from '../../reducers/topics.reducer';
 import { TopicMetadata } from '../../shared/models/topic-metadata';
 import { User } from '../../shared/models/user';
@@ -92,7 +95,7 @@ describe('membership action creators', () => {
     });
 
     describe('when become a member action is called', () => {
-        let store;
+        let store: MockStoreEnhanced;
         const user = sampleUser();
         const topic = sampleTopic();
 
@@ -111,7 +114,7 @@ describe('membership action creators', () => {
             });
 
             afterEach(() => {
-                jest.unmock('./topic-service')
+                jest.unmock('./topic-service');
             });
 
             it('should dispatch MEMBER_SUBMIT_REQUEST', () => {
@@ -120,7 +123,7 @@ describe('membership action creators', () => {
 
             it('should create MEMBER_SUBMIT_REQUEST_ERROR action', () => {
                 expect(store.getActions()[1].type).toBe(
-                    MEMBER_SUBMIT_REQUEST_ERROR,
+                    MEMBER_SUBMIT_REQUEST_ERROR
                 );
                 expect(store.getActions()[1].payload).toBe(fakeError);
             });
@@ -135,7 +138,7 @@ describe('membership action creators', () => {
             });
 
             afterEach(() => {
-                jest.unmock('./topic-service')
+                jest.unmock('./topic-service');
             });
 
             it('should dispatch MEMBER_SUBMIT_REQUEST', () => {
@@ -144,7 +147,7 @@ describe('membership action creators', () => {
 
             it('should create MEMBER_SUBMIT_REQUEST_SUCCESS action', () => {
                 expect(store.getActions()[1].type).toBe(
-                    MEMBER_SUBMIT_REQUEST_SUCCESS,
+                    MEMBER_SUBMIT_REQUEST_SUCCESS
                 );
             });
         });
@@ -170,7 +173,7 @@ describe('membership action creators', () => {
             });
 
             afterEach(() => {
-                jest.unmock('./topic-service')
+                jest.unmock('./topic-service');
             });
 
             it('should dispatch MEMBER_SUBMIT_REQUEST', () => {
@@ -179,7 +182,7 @@ describe('membership action creators', () => {
 
             it('should create MEMBER_LEAVE_REQUEST_ERROR action', () => {
                 expect(store.getActions()[1].type).toBe(
-                    MEMBER_LEAVE_REQUEST_ERROR,
+                    MEMBER_LEAVE_REQUEST_ERROR
                 );
                 expect(store.getActions()[1].payload).toBe(fakeError);
             });
@@ -194,7 +197,7 @@ describe('membership action creators', () => {
             });
 
             afterEach(() => {
-                jest.unmock('./topic-service')
+                jest.unmock('./topic-service');
             });
 
             it('should dispatch MEMBER_LEAVE_REQUEST', () => {
@@ -203,7 +206,7 @@ describe('membership action creators', () => {
 
             it('should create MEMBER_LEAVE_REQUEST_SUCCESS action', () => {
                 expect(store.getActions()[1].type).toBe(
-                    MEMBER_LEAVE_REQUEST_SUCCESS,
+                    MEMBER_LEAVE_REQUEST_SUCCESS
                 );
             });
         });
