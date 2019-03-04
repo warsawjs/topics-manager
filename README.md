@@ -1,87 +1,60 @@
 # topics-manager
 
-## Contributing
+App for choosing subjects and signing up as trainers for workshops
 
-We welcome your contributions! Each PR needs at least one approving review.
+## Requirements
 
-For CSS properties please use the following order:
-Positioning > Display & Box Model > Color > Text > Other
-Simply explained here: https://css-tricks.com/poll-results-how-do-you-order-your-css-properties/
+* Authentication by GitHub
+* Use Firebase as persistence
+    + Store only the minimum values
 
+## TODO List
 
-## Work plan
+* [ ] IT Project goodies
+    + [x] Setup reset.css <https://github.com/warsawjs/topics-manager/pull/2/>
+    + [x] Setup ESLint <https://github.com/warsawjs/topics-manager/pull/5/>
+    + [x] Setup Pretier <https://github.com/warsawjs/topics-manager/pull/21>
+    + [x] Setup Husky <https://github.com/warsawjs/topics-manager/pull/5/>
+    + [x] Setup lint-staged <https://github.com/warsawjs/topics-manager/pull/5/>
+    + [ ] Setup i18n
 
-1. Add mock templates
+* [ ] Design
+    + [x] Add font Lato <https://github.com/warsawjs/topics-manager/pull/9/>
+    + [x] Add SVG Piechart lib <https://github.com/warsawjs/topics-manager/pull/24/>
 
-    _Final graphics will be added later, to be coherent with new WarsawJS page layout_
+* [ ] List view of all workshop proposals
+    + [x] Display the main list component
+    + [ ] Toggle between compact and broad
 
-2. Add basic components
-3. Add sign up and sign in
+* [ ] Component of workshop proposal (single element)
+    + [x] Display subject of the workshop
+    + [ ] Display list of trainers who want to join
+    + [x] Highlighting of the autor (first trainer)
+    + [x] Add button Voting - for the community
+        - [ ] Add protection from multiple votes
+        - [ ] Add protection from multiple signups by one trainer
+    + [x] Add button Join as trainer <https://github.com/warsawjs/topics-manager/pull/30/>
+    + [x] Add button Leave as trainer <https://github.com/warsawjs/topics-manager/pull/30/>
+    + [ ] Display numbers on pie chart <https://github.com/warsawjs/topics-manager/pull/30/>
+    + [ ] Highlight the workshop when we have:
+        - [ ] min. 3 trainers
+        - [ ] min. 40 likes or members
 
-    Requirements:
+* [x] From to adding a new subject
+    + [x] View for a signup user
+    + [x] Reset after issue of the form
+    + [x] Saving form data
+    + [ ] Edition of the saved subjects
 
-    - remember only the minimum: GitHub user.id | key and maybe votes
-    - use OAuth 2.0 - using a library or without
+* [ ] Showing the basic data about the signed up trainers
+    + [x] Add authorization via GitHub
+    + [x] Sign in
+    + [x] Logout
 
-## Features
+## Vendors
 
-### List view of all workshop proposals
-
-- [x] the main list component
-- [ ] toggle between compact and broad
-
-### Show view
-
-- [x] subject of the workshop
-- [ ] list of trainers who want to join
-- [x] highlighting of the autor (first trainer)
-
-#### Buttons
-
-- [x] Voting - for the community
-- [ ] secure from multiple votes
-- [ ] secure from multiple signups by one trainer
-- [x] from for adding a new subject
-    - [x] View for a signup user
-    - [x] Reset after issue of the form
-    - [x] Saving form data
-    - [ ] Edition of the saved subjects
-- [ ] Showing the basic data about the signed up trainers
-    - [x] add authorization
-    - [x] Use GitHub API integration or `hello.js`
-    - [x] Sign in
-    - [x] Logout
-
-## Additional features :star:
-
-- [ ] Highlight the workshop when we have:
-    - [ ] min. 3 trainers
-    - [ ] min. 40 likes or members
-
-### Components
-
-1. TopBar
-    - login / logout button
-
-2. Form
-    - title
-    - input
-    - text input
-    - button (reuse login) - send
-
-3. WorkshopsList
-4. Workshop
-    - trainersList
-    - trainer
-    - voteCounter
-    - workshopDescription
-    - “I want” button
-
-5. PastWorkshops
-    - Same components
-
-
-# libraries
-* redux-observable > 1.0.0 doess not support rxjs v6 or redux 4
-* redux-observable prior to 1.0.0 does not support redux < 4
-* redux-observable will support redux 4 soon hopefully https://github.com/redux-observable/redux-observable/issues/478 https://github.com/redux-observable/redux-observable/pull/501
+* `redux-observable` > 1.0.0 does not support rxjs v6 or redux 4
+* `redux-observable` prior to 1.0.0 does not support redux < 4
+* `redux-observable` will support redux 4 soon hopefully
+    + https://github.com/redux-observable/redux-observable/issues/478
+    + https://github.com/redux-observable/redux-observable/pull/501

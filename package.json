@@ -2,6 +2,18 @@
     "name": "topics-manager",
     "version": "0.1.0",
     "private": true,
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage  --collectCoverageFrom=**/src/**/*.js",
+        "lint:markdown": "markdownlint *.md",
+        "eject": "react-scripts eject",
+        "precommit": "lint-staged",
+        "format": "prettier src/**/*.js",
+        "format:write": "prettier --write src/**/*.js"
+    },
     "dependencies": {
         "auth0-js": "^9.6.0",
         "fbemitter": "^2.1.1",
@@ -18,17 +30,6 @@
         "redux-thunk": "^2.2.0",
         "styled-components": "^3.2.6"
     },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "jest",
-        "test:watch": "jest --watch",
-        "test:coverage": "jest --coverage  --collectCoverageFrom=**/src/**/*.js",
-        "eject": "react-scripts eject",
-        "precommit": "lint-staged",
-        "format": "prettier src/**/*.js",
-        "format:write": "prettier --write src/**/*.js"
-    },
     "devDependencies": {
         "ajv": "^6.5.0",
         "ajv-keywords": "^3.2.0",
@@ -37,6 +38,7 @@
         "babel-jest": "^22.4.3",
         "babel-plugin-styled-components": "^1.5.1",
         "babel-preset-env": "^1.6.1",
+        "babel-preset-es2015": "^6.24.1",
         "babel-preset-react": "^6.24.1",
         "babel-preset-stage-0": "^6.24.1",
         "enzyme": "^3.3.0",
@@ -50,6 +52,7 @@
         "jest": "^22.4.3",
         "jest-styled-components": "^5.0.1",
         "lint-staged": "^7.1.2",
+        "markdownlint-cli": "^0.13.0",
         "prettier": "1.13.4",
         "react-test-renderer": "^16.4.0",
         "redux-mock-store": "^1.5.1"
@@ -76,6 +79,10 @@
         "src/**/*.js": [
             "prettier --write",
             "eslint --fix",
+            "git add"
+        ],
+        "*.md": [
+            "markdownlint",
             "git add"
         ]
     }
